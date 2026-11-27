@@ -1,0 +1,3096 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MÁY GẮP THÚ THẦN KỲ | XL GAME LEARNING - Trường Tiểu học Xuân Lương</title>
+  <style>
+    /* =========================================================================
+       1. DESIGN TOKENS - PREMIUM CARTOON 3D / 2.5D AMUSEMENT PARK PALETTE
+       ========================================================================= */
+    :root {
+      --font-game: 'Segoe UI Rounded', 'Quicksand', 'Nunito', 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --pink-1: #f9a8d4;
+      --pink-2: #f472b6;
+      --pink-3: #db2777;
+      --mint-1: #5eead4;
+      --mint-2: #14b8a6;
+      --mint-3: #0f766e;
+      --lavender-1: #d8b4fe;
+      --lavender-2: #a855f7;
+      --lavender-3: #6d28d9;
+      --cream-1: #fef9c3;
+      --cream-2: #fde047;
+      --gold-1: #fbbf24;
+      --gold-2: #d97706;
+      --sky-1: #bae6fd;
+      --sky-2: #38bdf8;
+      --ink: #1e293b;
+      --muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    input, textarea, select {
+      user-select: text;
+      font-family: var(--font-game);
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: var(--font-game);
+      background: #1e1b4b;
+      color: var(--ink);
+    }
+
+    .hidden { display: none !important; }
+
+    /* =========================================================================
+       2. APP SHELL (16:9 TV & PROJECTOR OPTIMIZED)
+       ========================================================================= */
+    .app-shell {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #bae6fd 0%, #fbcfe8 55%, #fef9c3 100%);
+    }
+
+    /* TOP BAR: Compact, bright, leaves maximum room for the Claw Machine */
+    .top-bar {
+      position: relative;
+      z-index: 25;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(253,242,248,0.92) 100%);
+      border-bottom: 4px solid #f9a8d4;
+      box-shadow: 0 6px 22px rgba(109, 40, 217, 0.14);
+      flex-shrink: 0;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 8px rgba(219, 39, 119, 0.25));
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .xl-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+      padding: 2px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .class-status-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .pill-class {
+      background: #ede9fe;
+      border: 2px solid #c4b5fd;
+      color: #5b21b6;
+      cursor: pointer;
+    }
+    .pill-class:hover { background: #ddd6fe; }
+
+    .pill-remain {
+      background: #fef9c3;
+      border: 2px solid #facc15;
+      color: #854d0e;
+    }
+
+    .top-center {
+      text-align: center;
+      line-height: 1.08;
+    }
+
+    .game-title {
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      background: linear-gradient(90deg, #db2777 0%, #9333ea 50%, #0d9488 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,0.9));
+    }
+
+    .game-subtitle {
+      font-size: clamp(12px, 1.15vw, 15px);
+      font-weight: 800;
+      color: #6b21a8;
+      margin-top: 2px;
+    }
+
+    .top-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* 3D GLOSSY CARTOON BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      border-radius: 16px;
+      padding: 7px 13px;
+      font-family: var(--font-game);
+      font-weight: 900;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: transform 0.14s cubic-bezier(.34,1.56,.64,1), box-shadow 0.14s ease, filter 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.03);
+      filter: brightness(1.05);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(2px) scale(0.97);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+    }
+
+    .btn-icon {
+      padding: 7px 11px;
+      font-size: 13px;
+    }
+
+    .btn-pink {
+      background: linear-gradient(180deg, #f472b6 0%, #db2777 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #9d174d, 0 8px 18px rgba(219, 39, 119, 0.35);
+    }
+    .btn-pink:active:not(:disabled) { box-shadow: 0 1px 0 #9d174d; }
+
+    .btn-mint {
+      background: linear-gradient(180deg, #2dd4bf 0%, #0d9488 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #115e59, 0 6px 14px rgba(13, 148, 136, 0.3);
+    }
+    .btn-mint:active:not(:disabled) { box-shadow: 0 1px 0 #115e59; }
+
+    .btn-purple {
+      background: linear-gradient(180deg, #c084fc 0%, #7c3aed 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #5b21b6, 0 6px 14px rgba(124, 58, 237, 0.3);
+    }
+    .btn-purple:active:not(:disabled) { box-shadow: 0 1px 0 #5b21b6; }
+
+    .btn-gold {
+      background: linear-gradient(180deg, #fde047 0%, #f59e0b 100%);
+      color: #451a03;
+      box-shadow: 0 4px 0 #b45309, 0 6px 14px rgba(245, 158, 11, 0.3);
+    }
+    .btn-gold:active:not(:disabled) { box-shadow: 0 1px 0 #b45309; }
+
+    .btn-soft {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      color: var(--ink);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 0 #94a3b8;
+    }
+    .btn-soft:active:not(:disabled) { box-shadow: 0 1px 0 #94a3b8; }
+
+    .btn-danger {
+      background: linear-gradient(180deg, #f87171 0%, #dc2626 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #991b1b;
+    }
+
+    /* =========================================================================
+       3. CENTER PLAY STAGE (CLAW MACHINE CANVAS + FLOATING BIG CTA)
+       ========================================================================= */
+    .stage-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #clawCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Floating live status pill inside top of stage */
+    .live-banner {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(49, 46, 129, 0.82);
+      backdrop-filter: blur(6px);
+      color: #fef9c3;
+      border: 2.5px solid #fde047;
+      border-radius: 999px;
+      padding: 6px 22px;
+      font-size: clamp(13px, 1.35vw, 17px);
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 20px rgba(30, 27, 75, 0.28);
+      pointer-events: none;
+      z-index: 12;
+      white-space: nowrap;
+      max-width: 92%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Bottom center action dock with prominent "BẮT ĐẦU GẮP THÚ" button */
+    .bottom-dock {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 15;
+    }
+
+    .btn-grab-main {
+      font-size: clamp(17px, 2vw, 24px);
+      padding: 13px 34px;
+      border-radius: 999px;
+      border: 4px solid #fef08a;
+      background: linear-gradient(180deg, #ff6fb5 0%, #db2777 65%, #be185d 100%);
+      color: #ffffff;
+      box-shadow: 0 7px 0 #831843, 0 14px 32px rgba(219, 39, 119, 0.5);
+      letter-spacing: 0.7px;
+      animation: gentlePulse 2.4s ease-in-out infinite;
+    }
+    .btn-grab-main:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.04);
+    }
+    .btn-grab-main:disabled {
+      animation: none;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { box-shadow: 0 7px 0 #831843, 0 14px 28px rgba(219, 39, 119, 0.48); }
+      50% { box-shadow: 0 7px 0 #831843, 0 14px 38px rgba(250, 204, 21, 0.72); }
+    }
+
+    /* Subtle compact footer */
+    .app-footer {
+      background: linear-gradient(90deg, #4c1d95 0%, #701a75 50%, #0f766e 100%);
+      color: #f5f3ff;
+      padding: 5px 16px;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      z-index: 25;
+      flex-shrink: 0;
+      border-top: 3px solid #f9a8d4;
+    }
+    .app-footer strong { color: #fde047; }
+
+    /* =========================================================================
+       4. WINNER CELEBRATION MODAL + CIRCULAR COUNTDOWN TIMER
+       ========================================================================= */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 120;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 27, 75, 0.72);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 100;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .winner-backdrop {
+      background: radial-gradient(circle at center, rgba(253, 224, 71, 0.36), rgba(30, 27, 75, 0.88));
+      z-index: 115;
+    }
+
+    .winner-card {
+      position: relative;
+      z-index: 122;
+      width: min(820px, 96vw);
+      max-height: 94vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #fffdf5 0%, #ffffff 48%, #fdf2f8 100%);
+      border: 6px solid #fbbf24;
+      border-radius: 36px;
+      padding: 18px 26px 20px;
+      text-align: center;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(251, 191, 36, 0.42);
+      animation: popIn 0.45s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .winner-stage-canvas {
+      width: 280px;
+      height: 150px;
+      margin: 0 auto 2px;
+      display: block;
+    }
+
+    .winner-congrats {
+      font-size: clamp(20px, 2.3vw, 28px);
+      font-weight: 900;
+      color: #d97706;
+      letter-spacing: 2px;
+    }
+
+    .winner-name {
+      font-size: clamp(36px, 5.8vw, 68px);
+      font-weight: 900;
+      line-height: 1.12;
+      margin: 4px 0 4px;
+      background: linear-gradient(180deg, #db2777 0%, #7c3aed 55%, #0d9488 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      word-break: break-word;
+      animation: nameZoom 0.55s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .winner-selected-tag {
+      display: inline-block;
+      background: linear-gradient(90deg, #fef08a, #fbcfe8);
+      color: #831843;
+      border: 2px solid #f472b6;
+      border-radius: 999px;
+      padding: 4px 18px;
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+    }
+
+    .winner-encourage {
+      font-size: clamp(15px, 1.6vw, 19px);
+      font-weight: 800;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    /* Countdown Timer Section with Circular Ring */
+    .timer-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: #f8fafc;
+      border: 3px solid #c4b5fd;
+      border-radius: 26px;
+      padding: 12px 18px;
+      margin: 0 auto 14px;
+      max-width: 640px;
+    }
+
+    .ring-wrap {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      flex-shrink: 0;
+    }
+
+    .ring-svg {
+      width: 112px;
+      height: 112px;
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: #e2e8f0;
+      stroke-width: 10;
+    }
+
+    .ring-progress {
+      fill: none;
+      stroke: #14b8a6;
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 289;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.25s linear, stroke 0.25s ease;
+    }
+
+    .ring-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 40px;
+      color: #0f766e;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .ring-text.warn { color: #ea580c; }
+    .ring-text.done { color: #dc2626; font-size: 16px; text-align: center; padding: 0 8px; line-height: 1.15; }
+
+    .timer-controls-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .timer-presets {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .preset-btn {
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      border-radius: 10px;
+      padding: 4px 10px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .preset-btn.active {
+      background: #7c3aed;
+      border-color: #5b21b6;
+      color: #ffffff;
+    }
+
+    .timer-action-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .winner-footer-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* =========================================================================
+       5. MANAGEMENT MODALS (CLASSES, STUDENTS, HISTORY, SETTINGS, DIALOG)
+       ========================================================================= */
+    .modal-box {
+      width: min(820px, 95vw);
+      max-height: 90vh;
+      background: #ffffff;
+      border: 4px solid #f9a8d4;
+      border-radius: 28px;
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.42);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: popIn 0.24s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .modal-header {
+      padding: 14px 20px;
+      background: linear-gradient(90deg, #fdf2f8, #f5f3ff, #f0fdfa);
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .modal-header h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #6b21a8;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 20px;
+      font-weight: 900;
+      color: #475569;
+      cursor: pointer;
+    }
+    .modal-close:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+
+    .modal-body {
+      padding: 16px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-footer {
+      padding: 12px 20px;
+      background: #f8fafc;
+      border-top: 2px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .class-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      background: #fdf2f8;
+      border: 2px solid #fbcfe8;
+      border-radius: 16px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+
+    .input-ctrl, .select-ctrl {
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+    .input-ctrl:focus, .select-ctrl:focus { border-color: #a855f7; }
+
+    .tabs-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      background: #f8fafc;
+      font-weight: 900;
+      font-size: 13.5px;
+      color: #475569;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #a855f7;
+      border-color: #7c3aed;
+      color: #ffffff;
+    }
+
+    .stats-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .stat-chip {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #334155;
+    }
+
+    .student-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 8px;
+      max-height: 290px;
+      overflow-y: auto;
+      padding: 2px;
+    }
+
+    .student-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 7px 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+    }
+    .student-row.is-called {
+      background: #fef9c3;
+      border-color: #facc15;
+    }
+    .student-row.is-absent {
+      background: #f1f5f9;
+      opacity: 0.62;
+    }
+    .student-row.is-absent .st-name { text-decoration: line-through; }
+
+    .st-name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mini-btn {
+      border: none;
+      border-radius: 8px;
+      padding: 4px 7px;
+      font-size: 11.5px;
+      font-weight: 900;
+      cursor: pointer;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .mini-btn:hover { filter: brightness(0.95); }
+    .mini-btn.absent-on { background: #fed7aa; color: #9a3412; }
+    .mini-btn.del { background: #fee2e2; color: #b91c1c; }
+
+    .paste-area {
+      width: 100%;
+      min-height: 190px;
+      border: 2px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.5;
+      outline: none;
+      resize: vertical;
+    }
+    .paste-area:focus { border-color: #a855f7; }
+
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .setting-row input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #a855f7;
+      cursor: pointer;
+    }
+    .setting-row input[type="range"] {
+      width: 160px;
+      accent-color: #db2777;
+      cursor: pointer;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 340px;
+      overflow-y: auto;
+    }
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fdf2f8;
+      border: 2px solid #fbcfe8;
+      border-radius: 14px;
+      padding: 9px 14px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 42px;
+      right: 18px;
+      background: #312e81;
+      color: #fef9c3;
+      border: 2px solid #fde047;
+      padding: 10px 18px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 14px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+      z-index: 250;
+      animation: popIn 0.22s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.84) translateY(14px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes nameZoom {
+      0% { opacity: 0; transform: scale(0.45); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 960px) {
+      .top-bar {
+        grid-template-columns: 1fr auto;
+        padding: 6px 10px;
+      }
+      .top-center {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+      .btn { padding: 6px 10px; font-size: 12.5px; }
+      .btn-grab-main { padding: 10px 24px; font-size: 17px; }
+      .app-footer { font-size: 11px; justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- =====================================================================
+         TOP HEADER (BRANDING, TITLE, CLASS STATUS & CORNER CONTROLS)
+         ===================================================================== -->
+    <header class="top-bar">
+      <div class="top-left">
+        <!-- Inline SVG Emblem XL GAME LEARNING -->
+        <svg class="brand-logo" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="XL GAME LEARNING">
+          <defs>
+            <linearGradient id="xlClawGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f472b6"/>
+              <stop offset="50%" stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#14b8a6"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="72" height="72" rx="22" fill="url(#xlClawGrad)"/>
+          <rect x="9" y="9" width="62" height="62" rx="18" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.75"/>
+          <path d="M26 22 L40 13 L54 22 L50 30 L30 30 Z" fill="#fde047" stroke="#b45309" stroke-width="2" stroke-linejoin="round"/>
+          <text x="40" y="56" text-anchor="middle" fill="#ffffff" font-family="Trebuchet MS, sans-serif" font-weight="900" font-size="27">XL</text>
+        </svg>
+        <div class="brand-meta">
+          <span class="xl-badge">XL GAME LEARNING</span>
+          <div class="class-status-row">
+            <span class="pill pill-class" id="pillClass" title="Nhấn để đổi lớp hoặc quản lý danh sách">Lớp 3A</span>
+            <span class="pill pill-remain" id="pillRemain">Còn lại: 0/0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-center">
+        <h1 class="game-title">MÁY GẮP THÚ THẦN KỲ</h1>
+        <div class="game-subtitle">Hôm nay ai sẽ được chọn?</div>
+      </div>
+
+      <div class="top-right">
+        <button class="btn btn-purple btn-icon" id="btnManage">Danh sách</button>
+        <button class="btn btn-mint btn-icon" id="btnHistory">Lịch sử</button>
+        <button class="btn btn-gold btn-icon" id="btnSettings">Cài đặt</button>
+        <button class="btn btn-soft btn-icon" id="btnSoundToggle">Âm: Bật</button>
+        <button class="btn btn-soft btn-icon" id="btnFullscreen">Toàn màn hình</button>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         MAIN PLAY STAGE (3D / 2.5D CLAW MACHINE ON CANVAS)
+         ===================================================================== -->
+    <main class="stage-container" id="stageContainer">
+      <canvas id="clawCanvas"></canvas>
+      <div class="live-banner" id="liveBanner">Nhấn “BẮT ĐẦU GẮP THÚ” hoặc phím Space để khởi động máy!</div>
+
+      <div class="bottom-dock">
+        <button class="btn btn-grab-main" id="btnStartGrab">BẮT ĐẦU GẮP THÚ</button>
+      </div>
+    </main>
+
+    <!-- =====================================================================
+         SUBTLE IDENTITY FOOTER
+         ===================================================================== -->
+    <footer class="app-footer">
+      <div><strong>XL GAME LEARNING</strong> • Trường Tiểu học Xuân Lương • Thiết kế và phát triển: <strong>Ninh Tiến Hùng</strong></div>
+      <div>Khẩu hiệu: <strong>Học mà chơi – Chơi mà học</strong> • © 2026 – Trường Tiểu học Xuân Lương</div>
+    </footer>
+  </div>
+
+  <!-- =====================================================================
+       WINNER CELEBRATION OVERLAY + CIRCULAR COUNTDOWN TIMER
+       ===================================================================== -->
+  <canvas id="confettiCanvas" class="hidden"></canvas>
+  <div class="modal-backdrop winner-backdrop hidden" id="winnerModal" role="dialog" aria-modal="true">
+    <div class="winner-card">
+      <canvas id="winnerStageCanvas" class="winner-stage-canvas" width="560" height="300"></canvas>
+      <div class="winner-congrats">CHÚC MỪNG!</div>
+      <div class="winner-name" id="winnerNameEl">NGUYỄN MINH ANH</div>
+      <div class="winner-selected-tag">EM LÀ NGƯỜI ĐƯỢC CHỌN!</div>
+      <div class="winner-encourage">“Hãy tự tin thể hiện kiến thức của mình nhé!”</div>
+
+      <!-- Đồng hồ đếm ngược trả lời với vòng tiến trình -->
+      <div class="timer-panel">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 112 112">
+            <circle class="ring-bg" cx="56" cy="56" r="46"></circle>
+            <circle class="ring-progress" id="timerRing" cx="56" cy="56" r="46"></circle>
+          </svg>
+          <div class="ring-text" id="timerText">10</div>
+        </div>
+
+        <div class="timer-controls-col">
+          <div style="font-size:12.5px; font-weight:900; color:#6b21a8; text-transform:uppercase;">
+            Đồng hồ đếm ngược trả lời câu hỏi
+          </div>
+          <div class="timer-presets" id="timerPresets">
+            <button class="preset-btn" data-sec="5">5s</button>
+            <button class="preset-btn active" data-sec="10">10s</button>
+            <button class="preset-btn" data-sec="15">15s</button>
+            <button class="preset-btn" data-sec="20">20s</button>
+            <button class="preset-btn" data-sec="30">30s</button>
+            <button class="preset-btn" data-sec="60">60s</button>
+          </div>
+          <div class="timer-action-btns">
+            <button class="btn btn-mint" id="btnTimerStart">BẮT ĐẦU ĐẾM GIỜ</button>
+            <button class="btn btn-gold hidden" id="btnTimerPause">Tạm dừng</button>
+            <button class="btn btn-soft" id="btnTimerReset">Đặt lại</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="winner-footer-btns">
+        <button class="btn btn-pink" style="font-size:18px; padding:12px 28px;" id="btnNextTurn">LƯỢT TIẾP THEO</button>
+        <button class="btn btn-soft" id="btnCloseWinner">Xem máy gắp thú</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL QUẢN LÝ LỚP HỌC & DANH SÁCH HỌC SINH (1 - 60 NGƯỜI)
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="manageModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Quản lý lớp học & Danh sách (1 – 60 người)</h3>
+        <button class="modal-close" data-close="manageModal">×</button>
+      </div>
+      <div class="modal-body">
+        <!-- Multi-class selector & actions -->
+        <div class="class-bar">
+          <strong style="color:#831843;">Lớp đang chọn:</strong>
+          <select id="classSelect" class="select-ctrl"></select>
+          <button class="btn btn-mint btn-icon" id="btnAddClass">+ Tạo lớp mới</button>
+          <button class="btn btn-soft btn-icon" id="btnRenameClass">Đổi tên lớp</button>
+          <button class="btn btn-danger btn-icon" id="btnDeleteClass">Xóa lớp</button>
+        </div>
+
+        <div class="stats-strip" id="classStatsStrip"></div>
+
+        <div class="tabs-row">
+          <button class="tab-btn active" id="tabBtnList">Danh sách chi tiết</button>
+          <button class="tab-btn" id="tabBtnPaste">Dán nhanh từ Word / Excel</button>
+        </div>
+
+        <!-- Tab 1: Detailed List (Add, Edit, Absent, Delete) -->
+        <div id="tabListContent">
+          <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+            <input type="text" id="newStudentInput" class="input-ctrl" style="flex:1; min-width:180px;" placeholder="Nhập họ và tên học sinh mới..." />
+            <button class="btn btn-purple" id="btnAddStudent">+ Thêm</button>
+            <button class="btn btn-gold" id="btnResetRoundInModal">Đặt lại vòng chọn</button>
+          </div>
+          <div class="student-grid" id="studentGrid"></div>
+        </div>
+
+        <!-- Tab 2: Bulk Paste -->
+        <div id="tabPasteContent" class="hidden">
+          <p style="font-size:13.5px; font-weight:800; color:#475569; margin-bottom:8px;">
+            Dán danh sách mỗi tên trên một dòng (tự động bỏ dòng trống và khoảng trắng thừa, tối đa 60 người):
+          </p>
+          <textarea id="bulkPasteInput" class="paste-area" placeholder="Nguyễn Minh Anh&#10;Trần Bảo An&#10;Lê Gia Bảo..."></textarea>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:10px;">
+            <button class="btn btn-soft" id="btnFillSample">Điền danh sách mẫu</button>
+            <div style="display:flex; gap:8px;">
+              <button class="btn btn-mint" id="btnAppendPaste">Thêm vào lớp</button>
+              <button class="btn btn-pink" id="btnReplacePaste">Thay toàn bộ danh sách</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-purple" data-close="manageModal">Xong</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL LỊCH SỬ LỰA CHỌN
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="historyModal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="width:min(540px, 95vw);">
+      <div class="modal-header">
+        <h3>Lịch sử lựa chọn</h3>
+        <button class="modal-close" data-close="historyModal">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="historySummary" style="font-weight:900; color:#6b21a8; margin-bottom:10px;"></div>
+        <div class="history-list" id="historyListEl"></div>
+      </div>
+      <div class="modal-footer" style="justify-content:space-between;">
+        <button class="btn btn-danger" id="btnResetRoundHistory">Đặt lại vòng chọn</button>
+        <button class="btn btn-purple" data-close="historyModal">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL CÀI ĐẶT ÂM THANH & CHẾ ĐỘ CHỌN
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="width:min(500px, 95vw);">
+      <div class="modal-header">
+        <h3>Cài đặt trò chơi</h3>
+        <button class="modal-close" data-close="settingsModal">×</button>
+      </div>
+      <div class="modal-body">
+        <label class="setting-row">
+          <span>Chế độ không gọi trùng trong một vòng</span>
+          <input type="checkbox" id="chkNoRepeat" checked />
+        </label>
+        <label class="setting-row">
+          <span>Bật âm thanh trò chơi</span>
+          <input type="checkbox" id="chkSoundEnabled" checked />
+        </label>
+        <div class="setting-row">
+          <span>Âm lượng: <strong id="volLabel">70%</strong></span>
+          <input type="range" id="volRange" min="0" max="100" value="70" />
+        </div>
+        <label class="setting-row">
+          <span>Nhạc nền khu vui chơi khi gắp thú</span>
+          <input type="checkbox" id="chkBgmEnabled" checked />
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-purple" data-close="settingsModal">Lưu & Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CUSTOM DIALOG MODAL (THAY THẾ ALERT / CONFIRM / PROMPT)
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="dialogModal" role="dialog" aria-modal="true" style="z-index:200;">
+    <div class="modal-box" style="width:min(460px, 94vw);">
+      <div class="modal-header">
+        <h3 id="dialogTitle">Thông báo</h3>
+      </div>
+      <div class="modal-body">
+        <p id="dialogMessage" style="font-size:15.5px; font-weight:800; color:#334155; line-height:1.5;"></p>
+        <input type="text" id="dialogInput" class="input-ctrl hidden" style="width:100%; margin-top:12px;" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-soft" id="dialogCancelBtn">Hủy</button>
+        <button class="btn btn-pink" id="dialogOkBtn">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toastEl"></div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    /* =========================================================================
+       1. FAIR RANDOM ENGINE (CRYPTO.GETRANDOMVALUES - UNBIASED REJECTION)
+       ========================================================================= */
+    const FairRandom = {
+      int(max) {
+        if (max <= 1) return 0;
+        if (window.crypto && window.crypto.getRandomValues) {
+          const range = 0xFFFFFFFF;
+          const limit = range - (range % max);
+          const buf = new Uint32Array(1);
+          let v;
+          do {
+            window.crypto.getRandomValues(buf);
+            v = buf[0];
+          } while (v >= limit);
+          return v % max;
+        }
+        return Math.floor(Math.random() * max);
+      },
+      float() {
+        if (window.crypto && window.crypto.getRandomValues) {
+          const buf = new Uint32Array(1);
+          window.crypto.getRandomValues(buf);
+          return buf[0] / 4294967296;
+        }
+        return Math.random();
+      },
+      pick(arr) {
+        return arr && arr.length ? arr[this.int(arr.length)] : null;
+      },
+      shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = this.int(i + 1);
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    };
+
+    /* =========================================================================
+       2. WEB AUDIO API SOUND ENGINE (SOFT, PLEASANT, 100% OFFLINE)
+       ========================================================================= */
+    const Sound = {
+      ctx: null,
+      enabled: true,
+      bgmEnabled: true,
+      volume: 0.7,
+      bgmTimer: null,
+      bgmStep: 0,
+
+      unlock() {
+        try {
+          if (!this.ctx) {
+            const AC = window.AudioContext || window.webkitAudioContext;
+            if (AC) this.ctx = new AC();
+          }
+          if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+        } catch (e) {}
+      },
+
+      tone(freq, dur = 0.14, type = 'triangle', vol = 0.22, delay = 0, slideTo = null) {
+        if (!this.enabled || this.volume <= 0.01) return;
+        this.unlock();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime + delay;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const v = Math.min(0.42, vol * this.volume);
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, now);
+          if (slideTo) osc.frequency.exponentialRampToValueAtTime(Math.max(40, slideTo), now + dur);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(v, now + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + dur + 0.02);
+        } catch (e) {}
+      },
+
+      click() { this.tone(660, 0.06, 'triangle', 0.16, 0, 880); },
+
+      startUp() {
+        [523, 659, 784, 1046].forEach((f, i) => this.tone(f, 0.12, 'triangle', 0.2, i * 0.07));
+      },
+
+      motorStep() {
+        this.tone(240 + Math.random() * 50, 0.045, 'sine', 0.07, 0, 270);
+      },
+
+      clawOpenClose(closing = true) {
+        this.tone(closing ? 540 : 380, 0.1, 'triangle', 0.18, 0, closing ? 320 : 620);
+      },
+
+      liftSuspense(step = 0) {
+        const f = 360 + Math.min(step, 14) * 32;
+        this.tone(f, 0.11, 'sine', 0.14, 0, f + 24);
+      },
+
+      slipDrop() {
+        // Tiếng trượt xuống vui nhộn, không gây giật mình
+        this.tone(680, 0.24, 'sine', 0.22, 0, 210);
+        this.tone(260, 0.14, 'triangle', 0.18, 0.22, 340);
+      },
+
+      prizeChute() {
+        [587, 784, 987, 1174].forEach((f, i) => this.tone(f, 0.14, 'sine', 0.22, i * 0.065));
+      },
+
+      startParkBgm() {
+        this.stopParkBgm();
+        if (!this.enabled || !this.bgmEnabled) return;
+        const notes = [523, 659, 784, 659, 698, 880, 784, 659, 587, 784, 659, 523, 587, 659, 523, 392];
+        this.bgmStep = 0;
+        const loop = () => {
+          if (!this.enabled || !this.bgmEnabled || !App.isRunning) { this.stopParkBgm(); return; }
+          const n = notes[this.bgmStep % notes.length];
+          this.tone(n, 0.16, 'sine', 0.085);
+          if (this.bgmStep % 4 === 0) this.tone(n * 0.5, 0.22, 'triangle', 0.06);
+          this.bgmStep++;
+          this.bgmTimer = setTimeout(loop, 260);
+        };
+        loop();
+      },
+
+      stopParkBgm() {
+        if (this.bgmTimer) { clearTimeout(this.bgmTimer); this.bgmTimer = null; }
+      },
+
+      winFanfare() {
+        const seq = [
+          [523.25, 0, 0.12], [659.25, 0.11, 0.12], [783.99, 0.22, 0.12],
+          [1046.5, 0.34, 0.2], [783.99, 0.54, 0.12], [1046.5, 0.66, 0.45]
+        ];
+        seq.forEach(([f, t, d]) => this.tone(f, d, 'triangle', 0.25, t));
+        this.applause();
+      },
+
+      applause() {
+        if (!this.enabled || this.volume <= 0.01) return;
+        this.unlock();
+        if (!this.ctx) return;
+        try {
+          for (let i = 0; i < 16; i++) {
+            const delay = 0.2 + i * 0.085 + Math.random() * 0.03;
+            const dur = 0.055;
+            const sr = this.ctx.sampleRate;
+            const buf = this.ctx.createBuffer(1, Math.floor(sr * dur), sr);
+            const data = buf.getChannelData(0);
+            for (let j = 0; j < data.length; j++) {
+              data[j] = (Math.random() * 2 - 1) * Math.exp(-j / (data.length * 0.32));
+            }
+            const src = this.ctx.createBufferSource();
+            src.buffer = buf;
+            const flt = this.ctx.createBiquadFilter();
+            flt.type = 'bandpass';
+            flt.frequency.value = 1000 + Math.random() * 650;
+            const gain = this.ctx.createGain();
+            gain.gain.value = 0.12 * this.volume;
+            src.connect(flt); flt.connect(gain); gain.connect(this.ctx.destination);
+            src.start(this.ctx.currentTime + delay);
+          }
+        } catch (e) {}
+      },
+
+      timerTick(urgent = false) {
+        this.tone(urgent ? 880 : 620, 0.07, 'triangle', urgent ? 0.19 : 0.12);
+      },
+
+      timeUp() {
+        this.tone(660, 0.16, 'triangle', 0.22, 0);
+        this.tone(523, 0.16, 'triangle', 0.22, 0.18);
+        this.tone(392, 0.36, 'triangle', 0.24, 0.36);
+      }
+    };
+
+    /* =========================================================================
+       3. MULTI-CLASS DATA STORE (LOCALSTORAGE, 1 - 60 PARTICIPANTS PER CLASS)
+       ========================================================================= */
+    const STORAGE_KEY = 'xl_claw_machine_v1';
+
+    const SAMPLE_NAMES = [
+      'Nguyễn Minh Anh', 'Trần Bảo An', 'Lê Gia Bảo', 'Phạm Ngọc Diệp',
+      'Hoàng Đức Duy', 'Vũ Thảo Linh', 'Đặng Quang Minh', 'Bùi Khánh Ngọc',
+      'Đỗ Hoàng Phúc', 'Ngô Phương Thảo', 'Dương Tuấn Kiệt', 'Lý Hải Đăng',
+      'Trịnh Bảo Hân', 'Phan Anh Quân', 'Tạ Yến Nhi', 'Nguyễn Nhật Huy',
+      'Võ Minh Khang', 'Mai Thanh Trúc'
+    ];
+
+    const uid = (p = 'id') => p + '_' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
+
+    const Store = {
+      data: null,
+
+      createDefaultClass(name, names = SAMPLE_NAMES) {
+        return {
+          id: uid('cls'),
+          name,
+          students: names.slice(0, 60).map(n => ({ id: uid('st'), name: n, absent: false, called: false })),
+          history: []
+        };
+      },
+
+      load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && Array.isArray(parsed.classes) && parsed.classes.length > 0) {
+              this.data = parsed;
+            }
+          }
+        } catch (e) {}
+
+        if (!this.data) {
+          const cls = this.createDefaultClass('Lớp 3A');
+          this.data = {
+            currentClassId: cls.id,
+            classes: [cls],
+            settings: { noRepeat: true, soundEnabled: true, bgmEnabled: true, volume: 0.7 }
+          };
+        }
+        if (!this.data.classes.some(c => c.id === this.data.currentClassId)) {
+          this.data.currentClassId = this.data.classes[0].id;
+        }
+        Sound.enabled = this.data.settings.soundEnabled !== false;
+        Sound.bgmEnabled = this.data.settings.bgmEnabled !== false;
+        Sound.volume = typeof this.data.settings.volume === 'number' ? this.data.settings.volume : 0.7;
+        this.save();
+      },
+
+      save() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data)); } catch (e) {}
+      },
+
+      getClass() {
+        return this.data.classes.find(c => c.id === this.data.currentClassId) || this.data.classes[0];
+      },
+
+      getPresent(cls = this.getClass()) {
+        return cls.students.filter(s => !s.absent);
+      },
+
+      getEligible(cls = this.getClass()) {
+        const present = this.getPresent(cls);
+        return this.data.settings.noRepeat ? present.filter(s => !s.called) : present;
+      },
+
+      getDisplayName(st, cls = this.getClass()) {
+        if (!st) return '';
+        const norm = st.name.trim().toLowerCase();
+        const dup = cls.students.filter(x => x.name.trim().toLowerCase() === norm);
+        if (dup.length > 1) {
+          return `${st.name} (#${dup.findIndex(x => x.id === st.id) + 1})`;
+        }
+        return st.name;
+      },
+
+      getShortTag(st, cls = this.getClass()) {
+        const full = this.getDisplayName(st, cls);
+        const parts = full.split(/\s+/);
+        if (parts.length >= 3 && full.length > 14) return parts.slice(-2).join(' ');
+        return full;
+      },
+
+      recordWinner(st) {
+        const cls = this.getClass();
+        const found = cls.students.find(s => s.id === st.id);
+        if (found) found.called = true;
+        cls.history.unshift({
+          id: st.id,
+          name: this.getDisplayName(st, cls),
+          time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+        });
+        if (cls.history.length > 200) cls.history.length = 200;
+        this.save();
+      },
+
+      resetRound() {
+        const cls = this.getClass();
+        cls.students.forEach(s => { s.called = false; });
+        cls.history = [];
+        this.save();
+      }
+    };
+
+    /* =========================================================================
+       4. 12 DETAILED 3D/2.5D CHIBI PLUSHIES & CLAW MACHINE GRAPHICS ENGINE
+       ========================================================================= */
+    const PLUSH_SPECIES = [
+      'panda', 'bunny', 'cat', 'bear', 'dog', 'fox',
+      'dino', 'unicorn', 'penguin', 'duck', 'elephant', 'koala'
+    ];
+
+    const G = {
+      roundRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
+        ctx.closePath();
+      },
+
+      drawStar(ctx, x, y, r, color = '#fde047') {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        for (let i = 0; i < 10; i++) {
+          const rad = i % 2 === 0 ? r : r * 0.46;
+          const a = (i * Math.PI) / 5 - Math.PI / 2;
+          if (i === 0) ctx.moveTo(Math.cos(a) * rad, Math.sin(a) * rad);
+          else ctx.lineTo(Math.cos(a) * rad, Math.sin(a) * rad);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      },
+
+      /** Vẽ nền khu vui chơi hoạt hình pastel (vòng đu quay, lều, mây, sao) */
+      drawAmusementParkBg(ctx, w, h, t) {
+        const sky = ctx.createLinearGradient(0, 0, 0, h);
+        sky.addColorStop(0, '#bae6fd');
+        sky.addColorStop(0.45, '#e0e7ff');
+        sky.addColorStop(0.78, '#fbcfe8');
+        sky.addColorStop(1, '#fef9c3');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, w, h);
+
+        // Soft glowing sun / bokeh circles
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+        for (let i = 0; i < 7; i++) {
+          const bx = ((i * 213 + t * 8) % (w + 120)) - 60;
+          const by = 60 + (i % 3) * 75 + Math.sin(t + i) * 8;
+          ctx.beginPath(); ctx.arc(bx, by, 26 + (i % 3) * 14, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Distant Ferris Wheel on the left
+        ctx.save();
+        const fx = w * 0.11, fy = h * 0.42, fr = Math.min(w, h) * 0.16;
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.28)';
+        ctx.lineWidth = 4;
+        // Legs
+        ctx.beginPath();
+        ctx.moveTo(fx - fr * 0.55, fy + fr * 1.3); ctx.lineTo(fx, fy);
+        ctx.lineTo(fx + fr * 0.55, fy + fr * 1.3);
+        ctx.stroke();
+        // Rotating wheel
+        ctx.translate(fx, fy);
+        ctx.rotate(t * 0.18);
+        ctx.beginPath(); ctx.arc(0, 0, fr, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(0, 0, fr * 0.72, 0, Math.PI * 2); ctx.stroke();
+        const cabCols = ['#f472b6', '#38bdf8', '#fde047', '#34d399', '#c084fc', '#fb923c'];
+        for (let i = 0; i < 12; i++) {
+          const a = (i / 12) * Math.PI * 2;
+          ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(a) * fr, Math.sin(a) * fr); ctx.stroke();
+          ctx.save();
+          ctx.translate(Math.cos(a) * fr, Math.sin(a) * fr);
+          ctx.rotate(-t * 0.18);
+          ctx.fillStyle = cabCols[i % cabCols.length];
+          this.roundRect(ctx, -8, -4, 16, 14, 5);
+          ctx.fill();
+          ctx.restore();
+        }
+        ctx.restore();
+
+        // Cute pastel circus tent on the right
+        ctx.save();
+        const tx = w * 0.89, ty = h * 0.64, tw = Math.min(180, w * 0.16);
+        ctx.fillStyle = 'rgba(244, 114, 182, 0.35)';
+        ctx.beginPath();
+        ctx.moveTo(tx - tw / 2, ty);
+        ctx.lineTo(tx, ty - tw * 0.62);
+        ctx.lineTo(tx + tw / 2, ty);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.beginPath();
+        ctx.moveTo(tx - tw * 0.16, ty);
+        ctx.lineTo(tx, ty - tw * 0.62);
+        ctx.lineTo(tx + tw * 0.16, ty);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(254, 240, 138, 0.5)';
+        ctx.fillRect(tx - tw * 0.45, ty, tw * 0.9, tw * 0.45);
+        ctx.restore();
+
+        // Pastel ground hills & amusement floor
+        ctx.fillStyle = '#a7f3d0';
+        ctx.beginPath();
+        ctx.moveTo(0, h * 0.78);
+        ctx.quadraticCurveTo(w * 0.28, h * 0.68, w * 0.55, h * 0.76);
+        ctx.quadraticCurveTo(w * 0.82, h * 0.83, w, h * 0.72);
+        ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.fill();
+
+        const floorGrad = ctx.createLinearGradient(0, h * 0.82, 0, h);
+        floorGrad.addColorStop(0, '#fbcfe8');
+        floorGrad.addColorStop(1, '#e9d5ff');
+        ctx.fillStyle = floorGrad;
+        ctx.fillRect(0, h * 0.84, w, h * 0.16);
+
+        // Twinkling pastel stars
+        for (let i = 0; i < 12; i++) {
+          const sx = (i * 0.087 + 0.04) * w;
+          const sy = (0.08 + (i % 4) * 0.11) * h;
+          const pulse = 0.55 + Math.sin(t * 2.5 + i * 1.4) * 0.45;
+          ctx.globalAlpha = pulse * 0.75;
+          this.drawStar(ctx, sx, sy, 5 + (i % 3) * 2, i % 2 === 0 ? '#fde047' : '#ffffff');
+        }
+        ctx.globalAlpha = 1;
+      },
+
+      /** Vẽ bảng tên sắc nét, không bị tràn hay che khuất */
+      drawPlushTag(ctx, text, x, y, maxW, highlight = false) {
+        ctx.save();
+        let fs = 13.5;
+        const fam = getComputedStyle(document.body).fontFamily;
+        ctx.font = `900 ${fs}px ${fam}`;
+        let tw = ctx.measureText(text).width;
+        while (tw > maxW - 18 && fs > 10) {
+          fs -= 0.8;
+          ctx.font = `900 ${fs}px ${fam}`;
+          tw = ctx.measureText(text).width;
+        }
+        const bw = Math.min(maxW, tw + 18);
+        const bh = fs + 10;
+
+        ctx.shadowColor = 'rgba(30, 27, 75, 0.25)';
+        ctx.shadowBlur = 5;
+        ctx.shadowOffsetY = 2;
+        this.roundRect(ctx, x - bw / 2, y - bh / 2, bw, bh, bh / 2);
+        ctx.fillStyle = highlight ? '#fef08a' : 'rgba(255, 255, 255, 0.96)';
+        ctx.fill();
+
+        ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+        ctx.lineWidth = highlight ? 2.6 : 1.8;
+        ctx.strokeStyle = highlight ? '#db2777' : '#8b5cf6';
+        ctx.stroke();
+
+        ctx.fillStyle = highlight ? '#831843' : '#1e293b';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, x, y + 0.5, bw - 10);
+        ctx.restore();
+      },
+
+      /** Vẽ 12 loài thú bông 3D/2.5D siêu chi tiết có gradient, ánh sáng, chớp mắt & biểu cảm */
+      drawPlushie(ctx, speciesIdx, x, y, scale = 1, time = 0, seed = 0, tilt = 0, surprised = false) {
+        const type = PLUSH_SPECIES[speciesIdx % PLUSH_SPECIES.length];
+        const blinkCycle = (time * 0.9 + seed * 7) % 4.2;
+        const isBlinking = !surprised && blinkCycle > 4.02;
+
+        const palettes = {
+          panda:    { main: '#ffffff', hi: '#ffffff', sh: '#e2e8f0', acc: '#1e293b', belly: '#f1f5f9', line: '#334155' },
+          bunny:    { main: '#fff5f7', hi: '#ffffff', sh: '#fbcfe8', acc: '#f472b6', belly: '#ffffff', line: '#be185d' },
+          cat:      { main: '#fdba74', hi: '#ffedd5', sh: '#ea580c', acc: '#fed7aa', belly: '#fff7ed', line: '#9a3412' },
+          bear:     { main: '#b4693a', hi: '#d9986c', sh: '#7c3f1c', acc: '#fde68a', belly: '#fef3c7', line: '#5c2d12' },
+          dog:      { main: '#fcd34d', hi: '#fef08a', sh: '#d97706', acc: '#92400e', belly: '#fef9c3', line: '#78350f' },
+          fox:      { main: '#fb923c', hi: '#fed7aa', sh: '#c2410c', acc: '#ffffff', belly: '#fff7ed', line: '#9a3412' },
+          dino:     { main: '#34d399', hi: '#a7f3d0', sh: '#059669', acc: '#fbbf24', belly: '#d1fae5', line: '#065f46' },
+          unicorn:  { main: '#f5f3ff', hi: '#ffffff', sh: '#ddd6fe', acc: '#f472b6', belly: '#fce7f3', line: '#6d28d9' },
+          penguin:  { main: '#38bdf8', hi: '#7dd3fc', sh: '#0369a1', acc: '#fb923c', belly: '#ffffff', line: '#0c4a6e' },
+          duck:     { main: '#fde047', hi: '#fef9c3', sh: '#eab308', acc: '#f97316', belly: '#fef08a', line: '#a16207' },
+          elephant: { main: '#93c5fd', hi: '#dbeafe', sh: '#3b82f6', acc: '#fbcfe8', belly: '#eff6ff', line: '#1d4ed8' },
+          koala:    { main: '#cbd5e1', hi: '#f1f5f9', sh: '#64748b', acc: '#ffffff', belly: '#f8fafc', line: '#334155' }
+        };
+        const p = palettes[type];
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(tilt);
+        ctx.scale(scale, scale);
+
+        // Soft 3D ground shadow
+        ctx.fillStyle = 'rgba(30, 27, 75, 0.22)';
+        ctx.beginPath(); ctx.ellipse(0, 27, 23, 7, 0, 0, Math.PI * 2); ctx.fill();
+
+        ctx.lineWidth = 2.1;
+        ctx.strokeStyle = p.line;
+
+        // --- BODY (Chubby plushie sitting body with 3D radial gradient) ---
+        const bodyGrad = ctx.createRadialGradient(-6, 8, 3, 0, 14, 24);
+        bodyGrad.addColorStop(0, p.hi);
+        bodyGrad.addColorStop(0.7, p.main);
+        bodyGrad.addColorStop(1, p.sh);
+        ctx.fillStyle = bodyGrad;
+        ctx.beginPath();
+        ctx.ellipse(0, 14, 19, 15, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Soft belly patch
+        ctx.fillStyle = p.belly;
+        ctx.beginPath();
+        ctx.ellipse(0, 16, 11.5, 9.5, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Cute plushie feet & paws
+        ctx.fillStyle = type === 'panda' ? p.acc : p.main;
+        ctx.beginPath(); ctx.ellipse(-11, 24, 7, 5, -0.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(11, 24, 7, 5, 0.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        // Little arms
+        ctx.beginPath(); ctx.ellipse(-16, 11, 6, 4.5, 0.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(16, 11, 6, 4.5, -0.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        // --- EARS / HORNS / FEATURES BEHIND HEAD ---
+        if (type === 'bunny') {
+          [[-8, -26, -0.18], [8, -26, 0.18]].forEach(([ex, ey, r]) => {
+            ctx.fillStyle = p.main;
+            ctx.beginPath(); ctx.ellipse(ex, ey, 5.5, 14, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = p.acc;
+            ctx.beginPath(); ctx.ellipse(ex, ey, 2.8, 9, r, 0, Math.PI * 2); ctx.fill();
+          });
+        } else if (type === 'elephant') {
+          [[-21, -7, -0.2], [21, -7, 0.2]].forEach(([ex, ey, r]) => {
+            ctx.fillStyle = p.main;
+            ctx.beginPath(); ctx.ellipse(ex, ey, 11, 14, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = p.acc;
+            ctx.beginPath(); ctx.ellipse(ex * 0.94, ey + 1, 6.5, 9, r, 0, Math.PI * 2); ctx.fill();
+          });
+        } else if (type === 'koala') {
+          [[-16, -14], [16, -14]].forEach(([ex, ey]) => {
+            ctx.fillStyle = p.main;
+            ctx.beginPath(); ctx.arc(ex, ey, 9.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = p.acc;
+            ctx.beginPath(); ctx.arc(ex, ey, 5.2, 0, Math.PI * 2); ctx.fill();
+          });
+        } else if (type === 'cat' || type === 'fox') {
+          [[-12, -18], [12, -18]].forEach(([ex, ey]) => {
+            ctx.fillStyle = p.main;
+            ctx.beginPath(); ctx.moveTo(ex - 7, ey + 8); ctx.lineTo(ex, ey - 10); ctx.lineTo(ex + 7, ey + 8); ctx.closePath();
+            ctx.fill(); ctx.stroke();
+            ctx.fillStyle = p.acc;
+            ctx.beginPath(); ctx.moveTo(ex - 3.5, ey + 5); ctx.lineTo(ex, ey - 4); ctx.lineTo(ex + 3.5, ey + 5); ctx.closePath();
+            ctx.fill();
+          });
+        } else if (type === 'dog') {
+          ctx.fillStyle = p.acc;
+          ctx.beginPath(); ctx.ellipse(-17, -4, 6.5, 13, 0.25, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.ellipse(17, -4, 6.5, 13, -0.25, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        } else if (type === 'panda' || type === 'bear') {
+          [[-13, -18], [13, -18]].forEach(([ex, ey]) => {
+            ctx.fillStyle = type === 'panda' ? p.acc : p.main;
+            ctx.beginPath(); ctx.arc(ex, ey, 7.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            if (type === 'bear') {
+              ctx.fillStyle = p.acc;
+              ctx.beginPath(); ctx.arc(ex, ey, 3.6, 0, Math.PI * 2); ctx.fill();
+            }
+          });
+        } else if (type === 'unicorn') {
+          // Little ears + Rainbow mane tuft
+          [[-11, -18], [11, -18]].forEach(([ex, ey]) => {
+            ctx.fillStyle = p.main;
+            ctx.beginPath(); ctx.moveTo(ex - 5, ey + 6); ctx.lineTo(ex, ey - 8); ctx.lineTo(ex + 5, ey + 6); ctx.closePath();
+            ctx.fill(); ctx.stroke();
+          });
+          // Golden horn
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.moveTo(-4.5, -20); ctx.lineTo(0, -35); ctx.lineTo(4.5, -20); ctx.closePath();
+          ctx.fill(); ctx.stroke();
+          // Rainbow mane curls
+          ['#f472b6', '#38bdf8', '#fde047'].forEach((c, i) => {
+            ctx.fillStyle = c;
+            ctx.beginPath(); ctx.arc(-10 + i * 5, -21 + (i % 2) * 2, 4.5, 0, Math.PI * 2); ctx.fill();
+          });
+        } else if (type === 'dino') {
+          // Cute golden crest spikes
+          ctx.fillStyle = p.acc;
+          [-8, 0, 8].forEach((sx, i) => {
+            ctx.beginPath();
+            ctx.moveTo(sx - 4, -20); ctx.lineTo(sx, -29 - (i === 1 ? 2 : 0)); ctx.lineTo(sx + 4, -20);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+          });
+        } else if (type === 'duck') {
+          // Cute hair tuft on top
+          ctx.fillStyle = p.main;
+          ctx.beginPath(); ctx.ellipse(-2, -25, 3.5, 6, -0.3, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.ellipse(3, -24, 3, 5, 0.3, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        }
+
+        // --- CHIBI HEAD (Big & Glossy 3D) ---
+        const headGrad = ctx.createRadialGradient(-5, -13, 3, 0, -6, 22);
+        headGrad.addColorStop(0, p.hi);
+        headGrad.addColorStop(0.75, p.main);
+        headGrad.addColorStop(1, p.sh);
+        ctx.fillStyle = headGrad;
+        ctx.beginPath();
+        ctx.ellipse(0, -6, 18.5, 16.5, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Species face masks
+        if (type === 'penguin') {
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.ellipse(-5.5, -5, 7, 9, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(5.5, -5, 7, 9, 0, 0, Math.PI * 2); ctx.fill();
+        } else if (type === 'fox') {
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.ellipse(-9, 1, 8, 6, 0.2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(9, 1, 8, 6, -0.2, 0, Math.PI * 2); ctx.fill();
+        } else if (type === 'panda') {
+          ctx.fillStyle = '#1e293b';
+          ctx.beginPath(); ctx.ellipse(-7, -7, 5.2, 4.2, -0.25, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(7, -7, 5.2, 4.2, 0.25, 0, Math.PI * 2); ctx.fill();
+        } else if (type === 'bear' || type === 'dog') {
+          ctx.fillStyle = p.belly;
+          ctx.beginPath(); ctx.ellipse(0, -1, 7.5, 5.5, 0, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // --- GLOSSY EYES (with natural blink & cute surprised state when lifted!) ---
+        if (isBlinking) {
+          ctx.strokeStyle = type === 'panda' ? '#ffffff' : '#1e293b';
+          ctx.lineWidth = 2.2;
+          ctx.beginPath(); ctx.arc(-7, -7, 3, 0.1 * Math.PI, 0.9 * Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.arc(7, -7, 3, 0.1 * Math.PI, 0.9 * Math.PI); ctx.stroke();
+        } else {
+          const er = surprised ? 3.6 : 3.0;
+          ctx.fillStyle = type === 'panda' ? '#ffffff' : '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, -7, er, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, -7, er, 0, Math.PI * 2); ctx.fill();
+          // Eye sparkle
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(-5.8, -8.3, 1.2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8.2, -8.3, 1.2, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Rosy blush cheeks
+        ctx.fillStyle = 'rgba(244, 114, 182, 0.5)';
+        ctx.beginPath(); ctx.ellipse(-12.5, -2.5, 3.6, 2.3, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(12.5, -2.5, 3.6, 2.3, 0, 0, Math.PI * 2); ctx.fill();
+
+        // --- NOSE / BEAK / TRUNK ---
+        if (type === 'duck' || type === 'penguin') {
+          ctx.fillStyle = '#fb923c';
+          ctx.strokeStyle = '#c2410c';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath(); ctx.ellipse(0, -1.8, 5.5, 3.3, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        } else if (type === 'elephant') {
+          ctx.fillStyle = p.main;
+          ctx.strokeStyle = p.line;
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.moveTo(-3.5, -3);
+          ctx.quadraticCurveTo(-3, 7, 3.5, 6);
+          ctx.quadraticCurveTo(5.5, 5, 4, 2);
+          ctx.quadraticCurveTo(1.5, 2, 3.5, -3);
+          ctx.closePath();
+          ctx.fill(); ctx.stroke();
+        } else if (type === 'koala') {
+          ctx.fillStyle = '#334155';
+          ctx.beginPath(); ctx.ellipse(0, -3, 3.8, 5.2, 0, 0, Math.PI * 2); ctx.fill();
+        } else {
+          ctx.fillStyle = (type === 'panda' || type === 'bear' || type === 'dog') ? '#1e293b' : '#f43f5e';
+          ctx.beginPath(); ctx.ellipse(0, -3.2, 2.8, 2.0, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#334155';
+          ctx.lineWidth = 1.6;
+          if (surprised) {
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath(); ctx.arc(0, 1.5, 2.6, 0, Math.PI * 2); ctx.fill();
+          } else {
+            ctx.beginPath(); ctx.arc(-2.5, -0.5, 2.5, 0.1 * Math.PI, 0.9 * Math.PI); ctx.stroke();
+            ctx.beginPath(); ctx.arc(2.5, -0.5, 2.5, 0.1 * Math.PI, 0.9 * Math.PI); ctx.stroke();
+          }
+        }
+
+        // Specular gloss highlight on forehead for 3D plushie feel
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.beginPath(); ctx.ellipse(-6, -15, 5, 2.6, -0.4, 0, Math.PI * 2); ctx.fill();
+
+        ctx.restore();
+      },
+
+      /** Vẽ cần gắp kim loại 3 càng (trái, phải, giữa) + dây kéo + cụm motor trên ray */
+      drawClawAssembly(ctx, railY, clawX, clawY, openAmt, lightGold = false) {
+        ctx.save();
+        // Trolley carriage on top rail
+        const carGrad = ctx.createLinearGradient(clawX - 24, railY - 10, clawX + 24, railY + 12);
+        carGrad.addColorStop(0, '#f472b6');
+        carGrad.addColorStop(1, '#9333ea');
+        ctx.fillStyle = carGrad;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        this.roundRect(ctx, clawX - 24, railY - 8, 48, 20, 8);
+        ctx.fill(); ctx.stroke();
+
+        // Steel cable extending down
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 4.5;
+        ctx.beginPath(); ctx.moveTo(clawX, railY + 12); ctx.lineTo(clawX, clawY - 16); ctx.stroke();
+        ctx.strokeStyle = '#f8fafc';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(clawX - 1, railY + 12); ctx.lineTo(clawX - 1, clawY - 16); ctx.stroke();
+
+        // Metallic 3-prong Claw Head
+        ctx.translate(clawX, clawY);
+        const spread = 0.22 + openAmt * 0.65; // radians
+
+        // Middle rear prong (3rd prong for 3D depth)
+        ctx.strokeStyle = '#64748b';
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(0, -4);
+        ctx.lineTo(0, 22 - openAmt * 5);
+        ctx.stroke();
+
+        // Left & Right articulated steel prongs
+        [-1, 1].forEach(dir => {
+          ctx.save();
+          ctx.rotate(dir * -spread);
+          const prongGrad = ctx.createLinearGradient(0, 0, dir * 24, 34);
+          prongGrad.addColorStop(0, '#f8fafc');
+          prongGrad.addColorStop(0.5, '#cbd5e1');
+          prongGrad.addColorStop(1, '#64748b');
+          ctx.strokeStyle = prongGrad;
+          ctx.lineWidth = 6.5;
+          ctx.lineJoin = 'round';
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(dir * 6, -4);
+          ctx.lineTo(dir * 26, 15);
+          ctx.lineTo(dir * 12, 34);
+          ctx.stroke();
+
+          // Soft pink rubber gripper tip
+          ctx.fillStyle = lightGold ? '#fde047' : '#f472b6';
+          ctx.beginPath(); ctx.arc(dir * 12, 34, 4.2, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+        });
+
+        // Hub cap
+        const hubGrad = ctx.createRadialGradient(-4, -12, 2, 0, -8, 16);
+        hubGrad.addColorStop(0, lightGold ? '#fef08a' : '#f8fafc');
+        hubGrad.addColorStop(0.6, lightGold ? '#f59e0b' : '#94a3b8');
+        hubGrad.addColorStop(1, lightGold ? '#b45309' : '#475569');
+        ctx.fillStyle = hubGrad;
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 2;
+        this.roundRect(ctx, -16, -18, 32, 18, 9);
+        ctx.fill(); ctx.stroke();
+
+        // Indicator jewel on hub
+        ctx.fillStyle = lightGold ? '#fde047' : '#2dd4bf';
+        ctx.beginPath(); ctx.arc(0, -9, 4.5, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      },
+
+      /** Vẽ thú bông chiến thắng + hộp quà + cúp vàng + vầng sáng trên màn hình Chúc mừng */
+      drawWinnerShowcase(speciesIdx) {
+        const canvas = document.getElementById('winnerStageCanvas');
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        // Soft radiant golden rays
+        const cx = w / 2, cy = h * 0.48;
+        const glow = ctx.createRadialGradient(cx, cy, 18, cx, cy, 148);
+        glow.addColorStop(0, 'rgba(253, 224, 71, 0.72)');
+        glow.addColorStop(0.55, 'rgba(249, 168, 212, 0.25)');
+        glow.addColorStop(1, 'rgba(253, 224, 71, 0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, w, h);
+
+        // Twinkling decorative stars
+        [[110, 62, 13], [450, 58, 14], [148, 146, 9], [418, 148, 10], [280, 26, 11]].forEach(([sx, sy, sr], i) => {
+          this.drawStar(ctx, sx, sy, sr, i % 2 === 0 ? '#fde047' : '#f472b6');
+        });
+
+        // 3D Gift Box / Podium Base
+        const bx = cx - 96, by = 186, bw = 192, bh = 98;
+        const boxGrad = ctx.createLinearGradient(bx, by, bx, by + bh);
+        boxGrad.addColorStop(0, '#f472b6');
+        boxGrad.addColorStop(1, '#db2777');
+        ctx.fillStyle = boxGrad;
+        ctx.strokeStyle = '#9d174d';
+        ctx.lineWidth = 4;
+        this.roundRect(ctx, bx, by, bw, bh, 18);
+        ctx.fill(); ctx.stroke();
+
+        // Ribbon on Gift Box
+        ctx.fillStyle = '#fde047';
+        ctx.fillRect(cx - 16, by, 32, bh);
+        ctx.fillRect(bx, by + 32, bw, 22);
+        // Box Lid rim
+        ctx.fillStyle = '#fb7185';
+        this.roundRect(ctx, bx - 10, by - 14, bw + 20, 24, 10);
+        ctx.fill(); ctx.stroke();
+
+        // Winning Plushie standing happily on top of the Gift Box!
+        this.drawPlushie(ctx, speciesIdx, cx - 8, 128, 2.2, 0, 0, 0, false);
+
+        // Gleaming Golden Trophy beside the gift box
+        ctx.save();
+        ctx.translate(cx + 128, 214);
+        ctx.strokeStyle = '#b45309';
+        ctx.lineWidth = 4.5;
+        ctx.beginPath(); ctx.arc(-22, -20, 13, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(22, -20, 13, 0, Math.PI * 2); ctx.stroke();
+        const tGrad = ctx.createLinearGradient(-24, -42, 24, 8);
+        tGrad.addColorStop(0, '#fef08a');
+        tGrad.addColorStop(0.5, '#fbbf24');
+        tGrad.addColorStop(1, '#d97706');
+        ctx.fillStyle = tGrad;
+        ctx.beginPath();
+        ctx.moveTo(-24, -40); ctx.lineTo(24, -40);
+        ctx.quadraticCurveTo(22, 6, 0, 10);
+        ctx.quadraticCurveTo(-22, 6, -24, -40);
+        ctx.closePath();
+        ctx.fill(); ctx.stroke();
+        ctx.fillRect(-7, 10, 14, 18);
+        this.roundRect(ctx, -22, 26, 44, 14, 6);
+        ctx.fill(); ctx.stroke();
+        this.drawStar(ctx, 0, -18, 9, '#ffffff');
+        ctx.restore();
+      }
+    };
+
+    /* =========================================================================
+       5. CONFETTI CELEBRATION ENGINE
+       ========================================================================= */
+    const Confetti = {
+      raf: null,
+      list: [],
+      start() {
+        const c = document.getElementById('confettiCanvas');
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        const ctx = c.getContext('2d');
+        const cols = ['#f472b6', '#fde047', '#2dd4bf', '#a855f7', '#38bdf8', '#fb923c', '#ffffff'];
+        this.list = Array.from({ length: 135 }, () => ({
+          x: Math.random() * c.width,
+          y: -Math.random() * c.height * 0.65,
+          vx: (Math.random() - 0.5) * 4,
+          vy: 2.3 + Math.random() * 4.2,
+          w: 7 + Math.random() * 8,
+          h: 5 + Math.random() * 6,
+          rot: Math.random() * Math.PI * 2,
+          vr: (Math.random() - 0.5) * 0.18,
+          col: cols[Math.floor(Math.random() * cols.length)]
+        }));
+        this.stop();
+        c.classList.remove('hidden');
+        const tick = () => {
+          ctx.clearRect(0, 0, c.width, c.height);
+          for (const p of this.list) {
+            p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+            if (p.y > c.height + 20) { p.y = -15; p.x = Math.random() * c.width; }
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.col;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+          this.raf = requestAnimationFrame(tick);
+        };
+        this.raf = requestAnimationFrame(tick);
+      },
+      stop() {
+        if (this.raf) { cancelAnimationFrame(this.raf); this.raf = null; }
+        document.getElementById('confettiCanvas').classList.add('hidden');
+      }
+    };
+
+    /* =========================================================================
+       6. CLAW MACHINE CORE CONTROLLER & 6 SURPRISE SCENARIOS (12 - 15s)
+       ========================================================================= */
+    const App = {
+      canvas: null,
+      ctx: null,
+      w: 1280,
+      h: 720,
+      rafId: null,
+
+      // Machine geometry (computed responsively)
+      box: { x: 0, y: 0, w: 0, h: 0, railY: 0, chuteX: 0, chuteY: 0, chuteW: 0, floorY: 0 },
+
+      // Plushies currently inside the machine chamber (max 10 so names never overlap)
+      plushies: [],
+      isRunning: false,
+      winner: null,
+      winnerPlush: null,
+      goldLightMode: false,
+
+      // Claw physical state
+      claw: { x: 0.5, y: 0.08, open: 0.65 }, // normalized inside glass chamber (x: 0..1, y: 0..1)
+      heldPlush: null,
+      pendulumPhase: 0,
+      lastMotorTick: 0,
+      lastLiftTick: 0,
+
+      // Choreography step queue
+      steps: [],
+      stepIdx: 0,
+      stepElapsed: 0,
+      stepStartX: 0.5,
+      stepStartY: 0.08,
+      stepStartOpen: 0.65,
+      lastFrameTime: 0,
+
+      // Answer Timer
+      timerPreset: 10,
+      timerLeft: 10,
+      timerRunning: false,
+      timerHandle: null,
+
+      init() {
+        Store.load();
+        this.canvas = document.getElementById('clawCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.resize();
+        this.syncHeaderUI();
+        this.populateChamber();
+        this.bindEvents();
+        this.lastFrameTime = performance.now();
+        this.startLoop();
+        window.addEventListener('resize', () => this.resize());
+      },
+
+      resize() {
+        const wrap = document.getElementById('stageContainer');
+        const rect = wrap.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.w = Math.max(320, rect.width);
+        this.h = Math.max(240, rect.height);
+        this.canvas.width = Math.floor(this.w * dpr);
+        this.canvas.height = Math.floor(this.h * dpr);
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Compute centered 3D Claw Machine cabinet dimensions
+        const cabH = Math.min(this.h * 0.86, this.w * 0.62);
+        const cabW = Math.min(this.w * 0.78, cabH * 1.24);
+        const cabX = (this.w - cabW) / 2;
+        const cabY = Math.max(46, (this.h - cabH) / 2 - 14);
+
+        // Glass chamber inside cabinet
+        const gx = cabX + cabW * 0.065;
+        const gy = cabY + cabH * 0.16;
+        const gw = cabW * 0.87;
+        const gh = cabH * 0.65;
+
+        this.box = {
+          cabX, cabY, cabW, cabH,
+          x: gx, y: gy, w: gw, h: gh,
+          railY: gy + 16,
+          chuteX: gx + gw * 0.10,
+          chuteW: gw * 0.19,
+          chuteY: gy + gh - 68,
+          floorY: gy + gh - 24
+        };
+      },
+
+      syncHeaderUI() {
+        const cls = Store.getClass();
+        const present = Store.getPresent(cls).length;
+        const eligible = Store.getEligible(cls).length;
+        document.getElementById('pillClass').textContent = cls.name;
+        document.getElementById('pillRemain').textContent = Store.data.settings.noRepeat
+          ? `Còn lại: ${eligible}/${present}`
+          : `Có mặt: ${present} bạn`;
+        document.getElementById('btnSoundToggle').textContent = Store.data.settings.soundEnabled ? 'Âm: Bật' : 'Âm: Tắt';
+
+        // Lock controls while claw machine is operating
+        document.getElementById('btnStartGrab').disabled = this.isRunning;
+        ['btnManage', 'btnHistory', 'btnSettings'].forEach(id => {
+          document.getElementById(id).disabled = this.isRunning;
+        });
+      },
+
+      /** Sắp xếp tối đa 10 thú bông 2 tầng gọn gàng bên phải cửa nhận quà để tên luôn rõ ràng */
+      populateChamber(forcedWinner = null) {
+        const cls = Store.getClass();
+        const eligible = Store.getEligible(cls);
+        const pool = eligible.length > 0 ? eligible : Store.getPresent(cls);
+
+        let chosen = [];
+        if (forcedWinner) {
+          const others = FairRandom.shuffle(pool.filter(s => s.id !== forcedWinner.id));
+          chosen = FairRandom.shuffle([forcedWinner, ...others.slice(0, 9)]);
+        } else {
+          chosen = FairRandom.shuffle(pool).slice(0, 10);
+        }
+
+        const speciesOrder = FairRandom.shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+        const count = chosen.length;
+        const backCount = count > 5 ? Math.ceil(count / 2) : 0;
+        const frontCount = count - backCount;
+
+        this.plushies = chosen.map((student, idx) => {
+          const isBack = idx < backCount;
+          const rowIdx = isBack ? idx : idx - backCount;
+          const rowLen = isBack ? backCount : frontCount;
+          // Distribute cleanly from x=0.30 to x=0.92 (leaving left 0.04..0.24 for Prize Chute)
+          const nx = rowLen === 1
+            ? 0.60
+            : 0.31 + (rowIdx / (rowLen - 1)) * 0.61 + (isBack ? 0.02 : -0.01);
+          const ny = isBack ? 0.65 : 0.83;
+
+          return {
+            student,
+            label: Store.getShortTag(student, cls),
+            species: speciesOrder[idx % speciesOrder.length],
+            homeX: Math.max(0.28, Math.min(0.93, nx)),
+            homeY: ny,
+            nx: Math.max(0.28, Math.min(0.93, nx)),
+            ny,
+            vy: 0,
+            falling: false,
+            inChute: false,
+            chuteAlpha: 1,
+            seed: FairRandom.float(),
+            isBack
+          };
+        });
+
+        this.heldPlush = null;
+        this.claw = { x: 0.52, y: 0.09, open: 0.6 };
+        this.goldLightMode = false;
+      },
+
+      /** Xây dựng chuỗi hoạt ảnh 12-15 giây với 6 kịch bản bất ngờ ngẫu nhiên */
+      buildChoreography(winnerPlush) {
+        const decoys = this.plushies.filter(p => p !== winnerPlush);
+        const d1 = decoys.length > 0 ? FairRandom.pick(decoys) : null;
+        const d2 = decoys.length > 1 ? FairRandom.pick(decoys.filter(p => p !== d1)) : d1;
+
+        // Chọn ngẫu nhiên 1 trong 6 kịch bản (hoặc kịch bản đơn nếu chỉ có 1 người)
+        const scenario = decoys.length === 0 ? 99 : FairRandom.int(6);
+        const s = [];
+
+        const moveX = (tx, dur, banner) => s.push({ type: 'moveX', tx, dur, banner });
+        const pause = (dur, banner) => s.push({ type: 'pause', dur, banner });
+        const openClaw = (open, dur, banner) => s.push({ type: 'claw', open, dur, banner });
+        const dropTo = (ty, dur, banner) => s.push({ type: 'moveY', ty, dur, banner });
+        const grab = (plush, dur, banner) => s.push({ type: 'grab', plush, dur, banner });
+        const releaseSlip = (dur, banner) => s.push({ type: 'slip', dur, banner });
+        const releaseChute = (dur, banner) => s.push({ type: 'chuteDrop', dur, banner });
+
+        // Giai đoạn 1: Khởi động
+        pause(0.55, 'Đèn máy sáng lên! Cần gắp thần kỳ bắt đầu khởi động!');
+
+        // Giai đoạn 2: Tìm kiếm linh hoạt
+        moveX(0.32 + FairRandom.float() * 0.15, 0.85, 'Cần gắp đang di chuyển tìm kiếm ứng viên...');
+        moveX(0.72 + FairRandom.float() * 0.18, 0.95, 'Ai sẽ là người may mắn hôm nay nhỉ?');
+        pause(0.35, 'Cần gắp đang phân vân lựa chọn...');
+
+        if (scenario === 0 && d1) {
+          // KỊCH BẢN 0: Gắp d1 lên cao -> tạm dừng hồi hộp -> TUỘT RƠI BẤT NGỜ -> gắp winner!
+          moveX(d1.homeX, 0.8, `Cần gắp dừng lại ngay trên bạn ${d1.label}!`);
+          openClaw(1.0, 0.3, 'Càng gắp mở rộng...');
+          dropTo(d1.homeY - 0.08, 1.0, 'Hạ cần gắp xuống!');
+          grab(d1, 0.35, `Đã kẹp được thú bông của ${d1.label}!`);
+          dropTo(0.28, 1.25, `Đang nâng ${d1.label} lên cao... hồi hộp quá!`);
+          pause(0.6, 'Ôi! Liệu có chắc chắn không đây?!');
+          releaseSlip(0.75, 'Ối! Thú bông bất ngờ tuột khỏi cần gắp mất rồi!');
+          dropTo(0.10, 0.55, 'Cần gắp tiếp tục tìm kiếm cơ hội mới!');
+          moveX(winnerPlush.homeX, 0.95, `Cần gắp tiến thẳng tới vị trí của ${winnerPlush.label}!`);
+        } else if (scenario === 1 && d1) {
+          // KỊCH BẢN 1: Gắp d1 -> đưa gần tới cửa nhận quà -> TUỘT NGAY TRƯỚC CỬA -> quay lại gắp winner!
+          moveX(d1.homeX, 0.75, `Cần gắp nhắm tới ${d1.label}!`);
+          openClaw(1.0, 0.28, 'Mở càng gắp!');
+          dropTo(d1.homeY - 0.08, 0.95, 'Hạ xuống gắp thú bông!');
+          grab(d1, 0.35, `Nhấc ${d1.label} lên!`);
+          dropTo(0.22, 1.1, 'Đang nâng lên rất chắc chắn...');
+          moveX(0.27, 1.15, `Đang đưa ${d1.label} về phía cửa nhận quà...`);
+          releaseSlip(0.75, 'BẤT NGỜ CHƯA! Sát cửa nhận quà thì thú bông tuột xuống!');
+          dropTo(0.10, 0.45, 'Chưa xong đâu! Cần gắp quay lại tìm người khác!');
+          moveX(winnerPlush.homeX, 1.05, `Dừng lại ngay trên bạn ${winnerPlush.label}!`);
+        } else if (scenario === 2 && d1) {
+          // KỊCH BẢN 2: Đang đi sang phải bất ngờ đổi hướng sang trái -> vồ hụt -> lướt qua winner rồi quay lại!
+          moveX(0.86, 0.7, 'Cần gắp đi về phía bên phải...');
+          moveX(d1.homeX, 0.65, 'Bất ngờ đổi hướng sang trái!');
+          openClaw(1.0, 0.25, 'Chuẩn bị hạ xuống!');
+          dropTo(d1.homeY - 0.14, 0.9, 'Hạ cần gắp...');
+          openClaw(0.12, 0.35, 'Khép càng gắp... Ơ kìa, gắp hụt rồi!');
+          dropTo(0.10, 0.75, 'Cần gắp kéo lên tìm lại!');
+          const overshoot = Math.min(0.92, Math.max(0.30, winnerPlush.homeX + (winnerPlush.homeX > 0.6 ? -0.18 : 0.18)));
+          moveX(overshoot, 0.95, 'Cần gắp lướt qua thật nhanh...');
+          pause(0.35, 'Khoan đã! Quay lại!');
+          moveX(winnerPlush.homeX, 0.75, `Quay ngoắt lại ngay vị trí của ${winnerPlush.label}!`);
+        } else if (scenario === 3 && d1) {
+          // KỊCH BẢN 3: Vừa nâng d1 lên nửa chừng lại hạ xuống thả trả chỗ cũ -> sang gắp winner!
+          moveX(d1.homeX, 0.85, `Cần gắp chọn thử ${d1.label}...`);
+          openClaw(1.0, 0.3, 'Mở càng gắp!');
+          dropTo(d1.homeY - 0.08, 0.95, 'Hạ xuống!');
+          grab(d1, 0.35, `Nâng ${d1.label} lên một chút...`);
+          dropTo(0.46, 0.85, 'Đang kéo lên...');
+          pause(0.45, 'Cần gắp do dự... hay là chọn bạn khác nhỉ?');
+          dropTo(d1.homeY - 0.08, 0.75, 'Hạ xuống đặt lại nhẹ nhàng!');
+          releaseSlip(0.35, 'Đổi ý rồi! Đi tìm bạn khác thôi!');
+          dropTo(0.10, 0.75, 'Kéo cần lên...');
+          moveX(winnerPlush.homeX, 0.95, `Cần gắp dừng chắc chắn trên ${winnerPlush.label}!`);
+        } else if (scenario === 4) {
+          // KỊCH BẢN 4: Gắp thành công ngay lần đầu (nhưng trước đó phân vân dừng nhiều chỗ để không đoán được!)
+          const pA = decoys[0] ? decoys[0].homeX : 0.38;
+          const pB = decoys[1] ? decoys[1].homeX : 0.82;
+          moveX(pA, 0.95, 'Cần gắp dừng lại quan sát...');
+          pause(0.65, 'Có hạ xuống đây không nhỉ?');
+          moveX(pB, 1.05, 'Không! Di chuyển sang bên kia!');
+          pause(0.65, 'Đợi chút, có vẻ sắp hạ xuống...');
+          moveX(0.48, 0.85, 'Tiếp tục dò tìm cẩn thận...');
+          moveX(winnerPlush.homeX, 0.95, `Lần này dừng thật lâu trên bạn ${winnerPlush.label}!`);
+          pause(0.55, 'Cả lớp cùng nín thở chờ đợi nhé!');
+        } else if (scenario === 5 && d1 && d2) {
+          // KỊCH BẢN 5: Kịch tính kép (hụt d1 + tuột d2 -> trúng winner)
+          moveX(d1.homeX, 0.65, `Nhắm thử ${d1.label}...`);
+          dropTo(d1.homeY - 0.14, 0.7, 'Hạ nhanh!');
+          openClaw(0.15, 0.25, 'Gắp hụt nhẹ!');
+          dropTo(0.10, 0.6, 'Thử lại lần hai!');
+          moveX(d2.homeX, 0.75, `Thử gắp ${d2.label}!`);
+          openClaw(1.0, 0.25, 'Mở càng!');
+          dropTo(d2.homeY - 0.08, 0.75, 'Hạ xuống!');
+          grab(d2, 0.3, `Nâng ${d2.label} lên!`);
+          dropTo(0.36, 0.8, 'Lên cao nào...');
+          releaseSlip(0.6, 'Ôi tuột mất rồi! Cơ hội thuộc về ai đây?!');
+          dropTo(0.10, 0.5, 'Lần này chắc chắn sẽ thành công!');
+          moveX(winnerPlush.homeX, 0.85, `Cần gắp khóa mục tiêu ${winnerPlush.label}!`);
+        } else {
+          // Chỉ còn 1 người duy nhất
+          moveX(0.35, 0.9, 'Cần gắp đang khởi động tìm kiếm...');
+          moveX(0.82, 0.9, 'Di chuyển qua lại vui nhộn...');
+          moveX(winnerPlush.homeX, 0.9, `Đã tìm thấy ${winnerPlush.label}!`);
+        }
+
+        // Giai đoạn 5: GẮP THÀNH CÔNG NGƯỜI ĐƯỢC CHỌN
+        openClaw(1.0, 0.32, 'Càng gắp mở rộng chuẩn bị gắp!');
+        dropTo(winnerPlush.homeY - 0.08, 1.0, 'Hạ cần gắp xuống chính xác!');
+        grab(winnerPlush, 0.4, `ĐÃ GẮP CHẮC CHẮN THÚ BÔNG CỦA ${winnerPlush.label.toUpperCase()}!`);
+        dropTo(0.14, 1.35, 'Nâng lên thật chắc chắn... sắp tới đích rồi!');
+        moveX(0.13, 1.3, 'Đưa thú bông về cửa nhận quà!');
+        releaseChute(0.95, 'THẢ VÀO CỬA NHẬN QUÀ! TUYỆT VỜI QUÁ!');
+        pause(0.45, 'CHÚC MỪNG NGƯỜI ĐƯỢC CHỌN!');
+
+        return s;
+      },
+
+      async startGrab() {
+        if (this.isRunning) return;
+        Sound.unlock();
+
+        const cls = Store.getClass();
+        const present = Store.getPresent(cls);
+        if (present.length === 0) {
+          this.toast('Lớp chưa có học sinh nào có mặt. Hãy kiểm tra danh sách!');
+          this.openManageModal();
+          return;
+        }
+
+        let eligible = Store.getEligible(cls);
+        if (eligible.length === 0) {
+          const ok = await this.showDialog({
+            title: 'Hoàn thành vòng chọn!',
+            message: 'Tất cả học sinh có mặt trong lớp đều đã được gọi! Thầy cô có muốn đặt lại vòng chọn để bắt đầu vòng mới không?',
+            showCancel: true,
+            okText: 'Bắt đầu vòng mới',
+            cancelText: 'Để sau'
+          });
+          if (!ok) return;
+          Store.resetRound();
+          this.syncHeaderUI();
+          eligible = Store.getEligible(cls);
+        }
+
+        // 1. FAIR SELECTION BEFORE ANIMATION (100% equal probability across ALL eligible students)
+        this.winner = FairRandom.pick(eligible);
+
+        // 2. Refresh chamber ensuring the winner is among the displayed plushies
+        this.populateChamber(this.winner);
+        this.winnerPlush = this.plushies.find(p => p.student.id === this.winner.id);
+
+        // 3. Build randomized suspense choreography (~12–15 seconds)
+        this.steps = this.buildChoreography(this.winnerPlush);
+        this.stepIdx = 0;
+        this.stepElapsed = 0;
+        this.stepStartX = this.claw.x;
+        this.stepStartY = this.claw.y;
+        this.stepStartOpen = this.claw.open;
+
+        this.isRunning = true;
+        this.goldLightMode = false;
+        this.closeWinnerModal();
+        this.syncHeaderUI();
+
+        Sound.startUp();
+        Sound.startParkBgm();
+        this.setBanner(this.steps[0].banner);
+      },
+
+      finishGrab() {
+        this.isRunning = false;
+        Sound.stopParkBgm();
+        Store.recordWinner(this.winner);
+        this.syncHeaderUI();
+        this.openWinnerModal();
+      },
+
+      setBanner(txt) {
+        if (txt) document.getElementById('liveBanner').textContent = txt;
+      },
+
+      /* --- Update Physics & Choreography Each Frame --- */
+      update(dt, now) {
+        this.pendulumPhase += dt * 4.5;
+
+        // Gravity for any slipping/falling plushie
+        for (const p of this.plushies) {
+          if (p.falling) {
+            p.vy += dt * 2.6;
+            p.ny += p.vy * dt;
+            if (p.inChute) {
+              if (p.ny > 0.92) {
+                p.ny = 0.92;
+                p.chuteAlpha = Math.max(0, p.chuteAlpha - dt * 2.4);
+              }
+            } else if (p.ny >= p.homeY) {
+              p.ny = p.homeY;
+              // Soft cute bounce on landing
+              if (Math.abs(p.vy) > 0.25) {
+                p.vy = -p.vy * 0.28;
+              } else {
+                p.vy = 0;
+                p.falling = false;
+              }
+            }
+          }
+        }
+
+        if (!this.isRunning) return;
+
+        const step = this.steps[this.stepIdx];
+        if (!step) { this.finishGrab(); return; }
+
+        this.stepElapsed += dt;
+        const t = Math.min(1, this.stepElapsed / Math.max(0.05, step.dur));
+        const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+        if (step.type === 'moveX') {
+          this.claw.x = this.stepStartX + (step.tx - this.stepStartX) * ease;
+          if (now - this.lastMotorTick > 110) {
+            this.lastMotorTick = now;
+            Sound.motorStep();
+          }
+        } else if (step.type === 'moveY') {
+          this.claw.y = this.stepStartY + (step.ty - this.stepStartY) * ease;
+          if (this.heldPlush && now - this.lastLiftTick > 160) {
+            this.lastLiftTick = now;
+            Sound.liftSuspense(Math.floor(t * 10));
+          }
+        } else if (step.type === 'claw') {
+          if (this.stepElapsed <= dt * 1.5) Sound.clawOpenClose(step.open < this.stepStartOpen);
+          this.claw.open = this.stepStartOpen + (step.open - this.stepStartOpen) * ease;
+        } else if (step.type === 'grab') {
+          if (this.stepElapsed <= dt * 1.5) Sound.clawOpenClose(true);
+          this.claw.open = this.stepStartOpen + (0.28 - this.stepStartOpen) * ease;
+          if (t >= 0.45 && !this.heldPlush) {
+            this.heldPlush = step.plush;
+            this.heldPlush.falling = false;
+          }
+        } else if (step.type === 'slip') {
+          if (this.stepElapsed <= dt * 1.5) {
+            Sound.slipDrop();
+            if (this.heldPlush) {
+              this.heldPlush.falling = true;
+              this.heldPlush.vy = 0.05;
+              this.heldPlush = null;
+            }
+          }
+          this.claw.open = this.stepStartOpen + (0.85 - this.stepStartOpen) * ease;
+        } else if (step.type === 'chuteDrop') {
+          if (this.stepElapsed <= dt * 1.5) {
+            Sound.clawOpenClose(false);
+            Sound.prizeChute();
+            this.goldLightMode = true;
+            if (this.heldPlush) {
+              this.heldPlush.falling = true;
+              this.heldPlush.inChute = true;
+              this.heldPlush.vy = 0.1;
+              this.heldPlush = null;
+            }
+          }
+          this.claw.open = this.stepStartOpen + (0.95 - this.stepStartOpen) * ease;
+        }
+
+        // Keep held plushie suspended cleanly under claw with gentle swinging
+        if (this.heldPlush) {
+          this.heldPlush.nx = this.claw.x + Math.sin(this.pendulumPhase) * 0.008;
+          this.heldPlush.ny = this.claw.y + 0.085;
+        }
+
+        if (t >= 1) {
+          this.stepIdx++;
+          this.stepElapsed = 0;
+          this.stepStartX = this.claw.x;
+          this.stepStartY = this.claw.y;
+          this.stepStartOpen = this.claw.open;
+          if (this.steps[this.stepIdx]) {
+            this.setBanner(this.steps[this.stepIdx].banner);
+          } else {
+            this.finishGrab();
+          }
+        }
+      },
+
+      /* --- Render Full 3D/2.5D Claw Machine Scene --- */
+      render(now) {
+        const ctx = this.ctx;
+        const w = this.w, h = this.h;
+        const t = now / 1000;
+        const b = this.box;
+
+        // 1. Amusement Park Background
+        G.drawAmusementParkBg(ctx, w, h, t);
+
+        // 2. Soft 3D Ground Shadow under Machine
+        ctx.fillStyle = 'rgba(49, 46, 129, 0.22)';
+        ctx.beginPath();
+        ctx.ellipse(b.cabX + b.cabW / 2, b.cabY + b.cabH + 6, b.cabW * 0.52, 18, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // 3. Machine Outer 3D Body (Pink Pastel + Lavender + Cream Trim)
+        // Side depth extrusion
+        ctx.fillStyle = '#be185d';
+        G.roundRect(ctx, b.cabX - 8, b.cabY + 10, b.cabW + 16, b.cabH - 4, 34);
+        ctx.fill();
+
+        const cabGrad = ctx.createLinearGradient(b.cabX, b.cabY, b.cabX, b.cabY + b.cabH);
+        cabGrad.addColorStop(0, '#f472b6');
+        cabGrad.addColorStop(0.5, '#f9a8d4');
+        cabGrad.addColorStop(1, '#c084fc');
+        ctx.fillStyle = cabGrad;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 4;
+        G.roundRect(ctx, b.cabX, b.cabY, b.cabW, b.cabH, 32);
+        ctx.fill(); ctx.stroke();
+
+        // Top Marquee Dome
+        const mqGrad = ctx.createLinearGradient(b.cabX, b.cabY, b.cabX + b.cabW, b.cabY);
+        mqGrad.addColorStop(0, '#14b8a6');
+        mqGrad.addColorStop(0.5, '#a855f7');
+        mqGrad.addColorStop(1, '#ec4899');
+        ctx.fillStyle = mqGrad;
+        G.roundRect(ctx, b.cabX + 22, b.cabY + 10, b.cabW - 44, b.cabH * 0.115, 20);
+        ctx.fill();
+        ctx.strokeStyle = '#fef08a';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Marquee Text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = `900 ${Math.max(15, Math.min(26, b.cabW * 0.036))}px ${getComputedStyle(document.body).fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('★ MÁY GẮP THÚ THẦN KỲ ★', b.cabX + b.cabW / 2, b.cabY + 10 + (b.cabH * 0.115) / 2);
+
+        // Animated LED Bulbs around frame
+        const ledCols = this.goldLightMode
+          ? ['#fde047', '#ffffff', '#fbbf24']
+          : ['#fde047', '#5eead4', '#ffffff', '#f9a8d4'];
+        const ledCountX = 14;
+        for (let i = 0; i <= ledCountX; i++) {
+          const lx = b.cabX + 26 + (i / ledCountX) * (b.cabW - 52);
+          const col = ledCols[(i + Math.floor(t * (this.isRunning ? 7 : 3))) % ledCols.length];
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(lx, b.cabY + 5, 4.2, 0, Math.PI * 2); ctx.fill();
+        }
+        const ledCountY = 9;
+        for (let i = 1; i < ledCountY; i++) {
+          const ly = b.y + (i / ledCountY) * b.h;
+          const col = ledCols[(i + Math.floor(t * (this.isRunning ? 7 : 3))) % ledCols.length];
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(b.cabX + 12, ly, 4.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(b.cabX + b.cabW - 12, ly, 4.5, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // 4. Glass Chamber Interior Background (3D Perspective Depth)
+        ctx.save();
+        G.roundRect(ctx, b.x, b.y, b.w, b.h, 18);
+        ctx.clip();
+
+        const bgGrad = ctx.createLinearGradient(b.x, b.y, b.x, b.y + b.h);
+        bgGrad.addColorStop(0, this.goldLightMode ? '#fef9c3' : '#e0f2fe');
+        bgGrad.addColorStop(0.65, this.goldLightMode ? '#fde68a' : '#f5f3ff');
+        bgGrad.addColorStop(1, '#fce7f3');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(b.x, b.y, b.w, b.h);
+
+        // Subtle pastel wall stripes & twinkling stars inside cabinet
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        for (let sx = b.x; sx < b.x + b.w; sx += 56) {
+          ctx.fillRect(sx, b.y, 26, b.h);
+        }
+        for (let i = 0; i < 6; i++) {
+          G.drawStar(ctx, b.x + (0.15 + i * 0.14) * b.w, b.y + 52 + (i % 2) * 32, 7, 'rgba(251, 191, 36, 0.45)');
+        }
+
+        // Chamber floor with 2.5D slant
+        const flGrad = ctx.createLinearGradient(0, b.y + b.h * 0.72, 0, b.y + b.h);
+        flGrad.addColorStop(0, '#99f6e4');
+        flGrad.addColorStop(1, '#2dd4bf');
+        ctx.fillStyle = flGrad;
+        ctx.fillRect(b.x, b.y + b.h * 0.72, b.w, b.h * 0.28);
+
+        // 5. Prize Chute (Cửa nhận quà góc dưới trái)
+        const chX = b.x + 8, chY = b.y + b.h * 0.68, chW = b.w * 0.21, chH = b.h * 0.32;
+        ctx.fillStyle = '#312e81';
+        G.roundRect(ctx, chX, chY, chW, chH + 10, 12);
+        ctx.fill();
+        // Chute glass divider wall
+        ctx.fillStyle = this.goldLightMode ? 'rgba(253, 224, 71, 0.45)' : 'rgba(255, 255, 255, 0.35)';
+        ctx.strokeStyle = '#fde047';
+        ctx.lineWidth = 3;
+        G.roundRect(ctx, chX, chY, chW, chH, 10);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#fef08a';
+        ctx.font = `900 ${Math.max(10, Math.min(13, chW * 0.13))}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.fillText('NHẬN QUÀ', chX + chW / 2, chY + 18);
+        // Animated down arrow in chute
+        const arrY = chY + 34 + Math.sin(t * 6) * 4;
+        ctx.beginPath();
+        ctx.moveTo(chX + chW / 2 - 8, arrY);
+        ctx.lineTo(chX + chW / 2 + 8, arrY);
+        ctx.lineTo(chX + chW / 2, arrY + 10);
+        ctx.closePath();
+        ctx.fill();
+
+        // 6. Overhead Steel Rail
+        const railGrad = ctx.createLinearGradient(0, b.railY - 5, 0, b.railY + 7);
+        railGrad.addColorStop(0, '#f8fafc');
+        railGrad.addColorStop(0.5, '#94a3b8');
+        railGrad.addColorStop(1, '#475569');
+        ctx.fillStyle = railGrad;
+        ctx.fillRect(b.x, b.railY - 4, b.w, 10);
+
+        // 7. Draw Plushies (sorted by Y so front row sits naturally in front of back row)
+        const plushScale = Math.min(1.18, Math.max(0.72, b.w / 620));
+        const sortedPlushies = this.plushies.slice().sort((a, c) => a.ny - c.ny);
+
+        for (const p of sortedPlushies) {
+          if (p === this.heldPlush) continue; // draw held plush together with claw
+          if (p.chuteAlpha <= 0.02) continue;
+          const px = b.x + p.nx * b.w;
+          const py = b.y + p.ny * b.h;
+          const idleTilt = p.falling ? 0.15 : Math.sin(t * 2.2 + p.seed * 10) * 0.055;
+          const idleBob = p.falling ? 0 : Math.sin(t * 3.1 + p.seed * 8) * 1.8;
+
+          ctx.save();
+          ctx.globalAlpha = p.chuteAlpha;
+          G.drawPlushie(ctx, p.species, px, py + idleBob, plushScale, t, p.seed, idleTilt, p.falling);
+          if (!p.inChute) {
+            G.drawPlushTag(ctx, p.label, px, py + 31 * plushScale, Math.min(118, b.w * 0.17), false);
+          }
+          ctx.restore();
+        }
+
+        // 8. Draw Claw Assembly + Held Plushie (with natural pendulum swing & big highlighted tag)
+        const clawPx = b.x + this.claw.x * b.w;
+        const clawPy = b.y + this.claw.y * b.h;
+
+        if (this.heldPlush) {
+          const hp = this.heldPlush;
+          const px = b.x + hp.nx * b.w;
+          const py = b.y + hp.ny * b.h;
+          const swingTilt = Math.sin(this.pendulumPhase) * 0.14;
+          G.drawPlushie(ctx, hp.species, px, py, plushScale * 1.08, t, hp.seed, swingTilt, true);
+          G.drawPlushTag(ctx, hp.label, px, py + 35 * plushScale, 150, true);
+        }
+
+        G.drawClawAssembly(ctx, b.railY, clawPx, clawPy, this.claw.open, this.goldLightMode);
+
+        // 9. Transparent Glass Reflection Sheen
+        const glassGrad = ctx.createLinearGradient(b.x, b.y, b.x + b.w * 0.45, b.y + b.h * 0.65);
+        glassGrad.addColorStop(0, 'rgba(255, 255, 255, 0.30)');
+        glassGrad.addColorStop(0.45, 'rgba(255, 255, 255, 0.04)');
+        glassGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = glassGrad;
+        ctx.beginPath();
+        ctx.moveTo(b.x, b.y);
+        ctx.lineTo(b.x + b.w * 0.42, b.y);
+        ctx.lineTo(b.x + b.w * 0.16, b.y + b.h);
+        ctx.lineTo(b.x, b.y + b.h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.restore(); // end glass clip
+
+        // Glass Border Frame
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 4;
+        G.roundRect(ctx, b.x, b.y, b.w, b.h, 18);
+        ctx.stroke();
+
+        // 10. Bottom Cabinet Console (Prize Door + Decorative 3D Joystick & Buttons)
+        const baseY = b.y + b.h + 10;
+        const baseH = b.cabY + b.cabH - baseY - 10;
+        if (baseH > 26) {
+          // Outer Prize Pick-up Door (left)
+          ctx.fillStyle = '#4c1d95';
+          ctx.strokeStyle = '#fef08a';
+          ctx.lineWidth = 3;
+          G.roundRect(ctx, b.x + 8, baseY + 4, b.w * 0.24, baseH - 8, 12);
+          ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'rgba(255,255,255,0.22)';
+          G.roundRect(ctx, b.x + 14, baseY + 10, b.w * 0.24 - 12, (baseH - 20) * 0.5, 6);
+          ctx.fill();
+
+          // Cute decorative arcade joystick (right)
+          const jx = b.x + b.w * 0.78, jy = baseY + baseH * 0.55;
+          ctx.fillStyle = '#334155';
+          ctx.beginPath(); ctx.ellipse(jx, jy + 8, 16, 6, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 5;
+          ctx.beginPath(); ctx.moveTo(jx, jy + 6); ctx.lineTo(jx + (this.isRunning ? Math.sin(t * 7) * 6 : 0), jy - 10); ctx.stroke();
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(jx + (this.isRunning ? Math.sin(t * 7) * 6 : 0), jy - 12, 9, 0, Math.PI * 2); ctx.fill();
+
+          // Decorative glossy arcade button
+          ctx.fillStyle = '#fde047';
+          ctx.strokeStyle = '#b45309';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.ellipse(jx + 44, jy + 4, 15, 9, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        }
+      },
+
+      startLoop() {
+        const tick = (now) => {
+          const dt = Math.min(0.05, (now - this.lastFrameTime) / 1000);
+          this.lastFrameTime = now;
+          this.update(dt, now);
+          this.render(now);
+          this.rafId = requestAnimationFrame(tick);
+        };
+        this.rafId = requestAnimationFrame(tick);
+      },
+
+      /* =====================================================================
+         WINNER MODAL & CIRCULAR COUNTDOWN TIMER
+         ===================================================================== */
+      openWinnerModal() {
+        const cls = Store.getClass();
+        document.getElementById('winnerNameEl').textContent = Store.getDisplayName(this.winner, cls).toUpperCase();
+        G.drawWinnerShowcase(this.winnerPlush ? this.winnerPlush.species : 0);
+        this.resetTimer();
+        document.getElementById('winnerModal').classList.remove('hidden');
+        Confetti.start();
+        Sound.winFanfare();
+      },
+
+      closeWinnerModal() {
+        this.stopTimer();
+        Confetti.stop();
+        document.getElementById('winnerModal').classList.add('hidden');
+      },
+
+      resetTimer() {
+        this.stopTimer();
+        this.timerLeft = this.timerPreset;
+        this.updateTimerUI();
+        document.getElementById('btnTimerStart').classList.remove('hidden');
+        document.getElementById('btnTimerStart').textContent = 'BẮT ĐẦU ĐẾM GIỜ';
+        document.getElementById('btnTimerPause').classList.add('hidden');
+      },
+
+      startTimer() {
+        if (this.timerRunning) return;
+        if (this.timerLeft <= 0) this.timerLeft = this.timerPreset;
+        Sound.unlock();
+        this.timerRunning = true;
+        document.getElementById('btnTimerStart').classList.add('hidden');
+        document.getElementById('btnTimerPause').classList.remove('hidden');
+        this.updateTimerUI();
+
+        this.timerHandle = setInterval(() => {
+          this.timerLeft -= 1;
+          if (this.timerLeft <= 0) {
+            this.timerLeft = 0;
+            this.stopTimer();
+            const txt = document.getElementById('timerText');
+            txt.textContent = 'HẾT THỜI GIAN';
+            txt.className = 'ring-text done';
+            const ring = document.getElementById('timerRing');
+            ring.style.strokeDashoffset = '289';
+            ring.style.stroke = '#dc2626';
+            document.getElementById('btnTimerStart').classList.remove('hidden');
+            document.getElementById('btnTimerStart').textContent = 'ĐẾM LẠI';
+            document.getElementById('btnTimerPause').classList.add('hidden');
+            Sound.timeUp();
+          } else {
+            this.updateTimerUI();
+            Sound.timerTick(this.timerLeft <= 3);
+          }
+        }, 1000);
+      },
+
+      pauseTimer() {
+        this.stopTimer();
+        document.getElementById('btnTimerStart').classList.remove('hidden');
+        document.getElementById('btnTimerStart').textContent = 'TIẾP TỤC';
+        document.getElementById('btnTimerPause').classList.add('hidden');
+      },
+
+      stopTimer() {
+        this.timerRunning = false;
+        if (this.timerHandle) { clearInterval(this.timerHandle); this.timerHandle = null; }
+      },
+
+      updateTimerUI() {
+        const txt = document.getElementById('timerText');
+        const ring = document.getElementById('timerRing');
+        const ratio = Math.max(0, this.timerLeft / Math.max(1, this.timerPreset));
+        txt.textContent = String(this.timerLeft);
+        txt.className = 'ring-text' + (this.timerLeft <= 3 ? ' warn' : '');
+        ring.style.strokeDashoffset = String(289 * (1 - ratio));
+        ring.style.stroke = this.timerLeft <= 3 ? '#ea580c' : '#14b8a6';
+      },
+
+      /* =====================================================================
+         CLASS & STUDENT MANAGEMENT MODAL
+         ===================================================================== */
+      openManageModal() {
+        this.renderManageModal();
+        document.getElementById('manageModal').classList.remove('hidden');
+      },
+
+      renderManageModal() {
+        const sel = document.getElementById('classSelect');
+        sel.innerHTML = '';
+        Store.data.classes.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = `${c.name} (${c.students.length} HS)`;
+          if (c.id === Store.data.currentClassId) opt.selected = true;
+          sel.appendChild(opt);
+        });
+
+        const cls = Store.getClass();
+        const total = cls.students.length;
+        const present = Store.getPresent(cls).length;
+        const called = cls.students.filter(s => !s.absent && s.called).length;
+        const remain = Store.getEligible(cls).length;
+
+        document.getElementById('classStatsStrip').innerHTML = `
+          <span class="stat-chip">Sĩ số: ${total}/60</span>
+          <span class="stat-chip" style="color:#0f766e;">Có mặt: ${present}</span>
+          <span class="stat-chip" style="color:#b45309;">Đã chọn: ${called}</span>
+          <span class="stat-chip" style="color:#6d28d9;">Chưa chọn: ${remain}</span>
+        `;
+
+        const grid = document.getElementById('studentGrid');
+        grid.innerHTML = '';
+        if (cls.students.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:22px; color:#64748b; font-weight:800;">Chưa có học sinh nào. Hãy thêm hoặc dán danh sách từ Word/Excel!</div>';
+          return;
+        }
+
+        cls.students.forEach((st, idx) => {
+          const row = document.createElement('div');
+          row.className = 'student-row' + (st.absent ? ' is-absent' : st.called ? ' is-called' : '');
+          row.innerHTML = `
+            <span class="st-name" title="${Store.getDisplayName(st, cls)}">${idx + 1}. ${Store.getDisplayName(st, cls)}</span>
+            <button class="mini-btn ${st.absent ? 'absent-on' : ''}" data-act="absent">${st.absent ? 'Vắng' : 'Có mặt'}</button>
+            <button class="mini-btn" data-act="edit">Sửa</button>
+            <button class="mini-btn del" data-act="del">×</button>
+          `;
+
+          row.querySelector('[data-act="absent"]').onclick = () => {
+            Sound.click();
+            st.absent = !st.absent;
+            Store.save();
+            this.renderManageModal();
+            this.syncHeaderUI();
+            this.populateChamber();
+          };
+          row.querySelector('[data-act="edit"]').onclick = async () => {
+            Sound.click();
+            const newName = await this.showDialog({
+              title: 'Sửa tên học sinh',
+              message: 'Nhập lại họ và tên học sinh:',
+              inputValue: st.name,
+              showCancel: true,
+              okText: 'Lưu'
+            });
+            if (newName && typeof newName === 'string' && newName.trim()) {
+              st.name = newName.trim().replace(/\s+/g, ' ');
+              Store.save();
+              this.renderManageModal();
+              this.populateChamber();
+            }
+          };
+          row.querySelector('[data-act="del"]').onclick = () => {
+            Sound.click();
+            cls.students = cls.students.filter(x => x.id !== st.id);
+            Store.save();
+            this.renderManageModal();
+            this.syncHeaderUI();
+            this.populateChamber();
+          };
+          grid.appendChild(row);
+        });
+      },
+
+      openHistoryModal() {
+        const cls = Store.getClass();
+        const present = Store.getPresent(cls).length;
+        const called = cls.students.filter(s => !s.absent && s.called).length;
+        document.getElementById('historySummary').textContent = `${cls.name} • Đã chọn: ${called}/${present} • Tổng lượt: ${cls.history.length}`;
+        const el = document.getElementById('historyListEl');
+        el.innerHTML = '';
+        if (cls.history.length === 0) {
+          el.innerHTML = '<div style="text-align:center; padding:24px; color:#64748b; font-weight:800;">Chưa có lượt gắp thú nào trong vòng này.</div>';
+        } else {
+          cls.history.forEach((h, i) => {
+            const item = document.createElement('div');
+            item.className = 'history-item';
+            item.innerHTML = `<span>#${cls.history.length - i}. ${h.name}</span><span style="color:#64748b; font-size:12.5px;">${h.time}</span>`;
+            el.appendChild(item);
+          });
+        }
+        document.getElementById('historyModal').classList.remove('hidden');
+      },
+
+      openSettingsModal() {
+        document.getElementById('chkNoRepeat').checked = Store.data.settings.noRepeat;
+        document.getElementById('chkSoundEnabled').checked = Store.data.settings.soundEnabled;
+        document.getElementById('chkBgmEnabled').checked = Store.data.settings.bgmEnabled;
+        const pct = Math.round(Store.data.settings.volume * 100);
+        document.getElementById('volRange').value = pct;
+        document.getElementById('volLabel').textContent = pct + '%';
+        document.getElementById('settingsModal').classList.remove('hidden');
+      },
+
+      /* --- Custom Dialog & Toast --- */
+      showDialog({ title = 'Thông báo', message = '', inputValue = null, showCancel = false, okText = 'Đồng ý', cancelText = 'Hủy' }) {
+        return new Promise(resolve => {
+          const modal = document.getElementById('dialogModal');
+          const inp = document.getElementById('dialogInput');
+          document.getElementById('dialogTitle').textContent = title;
+          document.getElementById('dialogMessage').textContent = message;
+          const okBtn = document.getElementById('dialogOkBtn');
+          const cancelBtn = document.getElementById('dialogCancelBtn');
+          okBtn.textContent = okText;
+          cancelBtn.textContent = cancelText;
+          cancelBtn.classList.toggle('hidden', !showCancel);
+
+          const isPrompt = inputValue !== null;
+          inp.classList.toggle('hidden', !isPrompt);
+          if (isPrompt) {
+            inp.value = inputValue;
+            setTimeout(() => inp.focus(), 40);
+          }
+
+          modal.classList.remove('hidden');
+          const done = (val) => {
+            modal.classList.add('hidden');
+            okBtn.onclick = null;
+            cancelBtn.onclick = null;
+            resolve(val);
+          };
+          okBtn.onclick = () => done(isPrompt ? inp.value : true);
+          cancelBtn.onclick = () => done(isPrompt ? null : false);
+        });
+      },
+
+      toast(msg) {
+        const el = document.getElementById('toastEl');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+        clearTimeout(this._tTimer);
+        this._tTimer = setTimeout(() => el.classList.add('hidden'), 2600);
+      },
+
+      /* --- Bind All UI Events --- */
+      bindEvents() {
+        document.getElementById('btnStartGrab').addEventListener('click', () => { Sound.click(); this.startGrab(); });
+        document.getElementById('btnNextTurn').addEventListener('click', () => { Sound.click(); this.startGrab(); });
+        document.getElementById('btnCloseWinner').addEventListener('click', () => { Sound.click(); this.closeWinnerModal(); });
+
+        document.getElementById('pillClass').addEventListener('click', () => { if (!this.isRunning) { Sound.click(); this.openManageModal(); } });
+        document.getElementById('btnManage').addEventListener('click', () => { Sound.click(); this.openManageModal(); });
+        document.getElementById('btnHistory').addEventListener('click', () => { Sound.click(); this.openHistoryModal(); });
+        document.getElementById('btnSettings').addEventListener('click', () => { Sound.click(); this.openSettingsModal(); });
+
+        document.getElementById('btnSoundToggle').addEventListener('click', () => {
+          Store.data.settings.soundEnabled = !Store.data.settings.soundEnabled;
+          Sound.enabled = Store.data.settings.soundEnabled;
+          if (!Sound.enabled) Sound.stopParkBgm();
+          else Sound.click();
+          Store.save();
+          this.syncHeaderUI();
+        });
+
+        document.getElementById('btnFullscreen').addEventListener('click', () => {
+          Sound.click();
+          if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {});
+          else document.exitFullscreen?.().catch(() => {});
+        });
+
+        // Timer Preset Buttons
+        document.getElementById('timerPresets').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-sec]');
+          if (!btn) return;
+          Sound.click();
+          this.timerPreset = Number(btn.dataset.sec);
+          document.querySelectorAll('#timerPresets .preset-btn').forEach(b => b.classList.toggle('active', b === btn));
+          this.resetTimer();
+        });
+        document.getElementById('btnTimerStart').addEventListener('click', () => { Sound.click(); this.startTimer(); });
+        document.getElementById('btnTimerPause').addEventListener('click', () => { Sound.click(); this.pauseTimer(); });
+        document.getElementById('btnTimerReset').addEventListener('click', () => { Sound.click(); this.resetTimer(); });
+
+        // Multi-Class Management Events
+        document.getElementById('classSelect').addEventListener('change', (e) => {
+          Store.data.currentClassId = e.target.value;
+          Store.save();
+          this.renderManageModal();
+          this.syncHeaderUI();
+          this.populateChamber();
+        });
+
+        document.getElementById('btnAddClass').addEventListener('click', async () => {
+          Sound.click();
+          const name = await this.showDialog({
+            title: 'Tạo lớp học mới',
+            message: 'Nhập tên lớp mới (ví dụ: 1A, 2B, 4A, 5C...):',
+            inputValue: 'Lớp ' + (Store.data.classes.length + 1) + 'A',
+            showCancel: true,
+            okText: 'Tạo lớp'
+          });
+          if (name && name.trim()) {
+            const nc = Store.createDefaultClass(name.trim(), []);
+            Store.data.classes.push(nc);
+            Store.data.currentClassId = nc.id;
+            Store.save();
+            this.renderManageModal();
+            this.syncHeaderUI();
+            this.populateChamber();
+            this.toast(`Đã tạo ${nc.name}!`);
+          }
+        });
+
+        document.getElementById('btnRenameClass').addEventListener('click', async () => {
+          Sound.click();
+          const cls = Store.getClass();
+          const name = await this.showDialog({
+            title: 'Đổi tên lớp',
+            message: 'Nhập tên mới cho lớp:',
+            inputValue: cls.name,
+            showCancel: true,
+            okText: 'Lưu'
+          });
+          if (name && name.trim()) {
+            cls.name = name.trim();
+            Store.save();
+            this.renderManageModal();
+            this.syncHeaderUI();
+          }
+        });
+
+        document.getElementById('btnDeleteClass').addEventListener('click', async () => {
+          Sound.click();
+          if (Store.data.classes.length <= 1) {
+            this.toast('Cần giữ lại ít nhất 1 lớp học!');
+            return;
+          }
+          const cls = Store.getClass();
+          const ok = await this.showDialog({
+            title: 'Xóa lớp học',
+            message: `Bạn có chắc muốn xóa "${cls.name}" và toàn bộ danh sách của lớp này?`,
+            showCancel: true,
+            okText: 'Xóa lớp'
+          });
+          if (ok) {
+            Store.data.classes = Store.data.classes.filter(c => c.id !== cls.id);
+            Store.data.currentClassId = Store.data.classes[0].id;
+            Store.save();
+            this.renderManageModal();
+            this.syncHeaderUI();
+            this.populateChamber();
+            this.toast('Đã xóa lớp học!');
+          }
+        });
+
+        // Tabs inside Manage Modal
+        document.getElementById('tabBtnList').addEventListener('click', () => {
+          Sound.click();
+          document.getElementById('tabBtnList').classList.add('active');
+          document.getElementById('tabBtnPaste').classList.remove('active');
+          document.getElementById('tabListContent').classList.remove('hidden');
+          document.getElementById('tabPasteContent').classList.add('hidden');
+        });
+        document.getElementById('tabBtnPaste').addEventListener('click', () => {
+          Sound.click();
+          document.getElementById('tabBtnPaste').classList.add('active');
+          document.getElementById('tabBtnList').classList.remove('active');
+          document.getElementById('tabPasteContent').classList.remove('hidden');
+          document.getElementById('tabListContent').classList.add('hidden');
+        });
+
+        // Add Single Student
+        const addOne = () => {
+          const inp = document.getElementById('newStudentInput');
+          const name = inp.value.trim().replace(/\s+/g, ' ');
+          if (!name) return;
+          const cls = Store.getClass();
+          if (cls.students.length >= 60) {
+            this.toast('Mỗi lớp hỗ trợ tối đa 60 học sinh!');
+            return;
+          }
+          cls.students.push({ id: uid('st'), name, absent: false, called: false });
+          inp.value = '';
+          Store.save();
+          this.renderManageModal();
+          this.syncHeaderUI();
+          this.populateChamber();
+        };
+        document.getElementById('btnAddStudent').addEventListener('click', () => { Sound.click(); addOne(); });
+        document.getElementById('newStudentInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') addOne(); });
+
+        // Bulk Paste Actions
+        document.getElementById('btnFillSample').addEventListener('click', () => {
+          Sound.click();
+          document.getElementById('bulkPasteInput').value = SAMPLE_NAMES.join('\n');
+        });
+        const applyPaste = (replace) => {
+          const lines = document.getElementById('bulkPasteInput').value
+            .split(/\r?\n/).map(s => s.trim().replace(/\s+/g, ' ')).filter(Boolean);
+          if (lines.length === 0) { this.toast('Vui lòng dán ít nhất 1 tên học sinh!'); return; }
+          const cls = Store.getClass();
+          if (replace) {
+            cls.students = lines.slice(0, 60).map(n => ({ id: uid('st'), name: n, absent: false, called: false }));
+            cls.history = [];
+          } else {
+            const room = Math.max(0, 60 - cls.students.length);
+            lines.slice(0, room).forEach(n => cls.students.push({ id: uid('st'), name: n, absent: false, called: false }));
+          }
+          document.getElementById('bulkPasteInput').value = '';
+          Store.save();
+          this.renderManageModal();
+          this.syncHeaderUI();
+          this.populateChamber();
+          document.getElementById('tabBtnList').click();
+          this.toast(`Đã cập nhật danh sách (${cls.students.length} học sinh)!`);
+        };
+        document.getElementById('btnAppendPaste').addEventListener('click', () => { Sound.click(); applyPaste(false); });
+        document.getElementById('btnReplacePaste').addEventListener('click', () => { Sound.click(); applyPaste(true); });
+
+        // Reset Round Buttons
+        const askResetRound = async () => {
+          Sound.click();
+          const ok = await this.showDialog({
+            title: 'Đặt lại vòng chọn',
+            message: 'Cho phép tất cả học sinh có mặt trong lớp được tham gia lại từ đầu?',
+            showCancel: true,
+            okText: 'Đặt lại ngay'
+          });
+          if (ok) {
+            Store.resetRound();
+            this.syncHeaderUI();
+            this.populateChamber();
+            this.renderManageModal();
+            document.getElementById('historyModal').classList.add('hidden');
+            this.toast('Đã đặt lại vòng chọn thành công!');
+          }
+        };
+        document.getElementById('btnResetRoundInModal').addEventListener('click', askResetRound);
+        document.getElementById('btnResetRoundHistory').addEventListener('click', askResetRound);
+
+        // Settings Bindings
+        document.getElementById('chkNoRepeat').addEventListener('change', (e) => {
+          Store.data.settings.noRepeat = e.target.checked;
+          Store.save();
+          this.syncHeaderUI();
+        });
+        document.getElementById('chkSoundEnabled').addEventListener('change', (e) => {
+          Store.data.settings.soundEnabled = e.target.checked;
+          Sound.enabled = e.target.checked;
+          if (!Sound.enabled) Sound.stopParkBgm();
+          Store.save();
+          this.syncHeaderUI();
+        });
+        document.getElementById('chkBgmEnabled').addEventListener('change', (e) => {
+          Store.data.settings.bgmEnabled = e.target.checked;
+          Sound.bgmEnabled = e.target.checked;
+          if (!Sound.bgmEnabled) Sound.stopParkBgm();
+          Store.save();
+        });
+        document.getElementById('volRange').addEventListener('input', (e) => {
+          const pct = Number(e.target.value);
+          document.getElementById('volLabel').textContent = pct + '%';
+          Store.data.settings.volume = pct / 100;
+          Sound.volume = pct / 100;
+          Store.save();
+        });
+
+        // Close Modal Buttons
+        document.querySelectorAll('[data-close]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            Sound.click();
+            document.getElementById(btn.dataset.close).classList.add('hidden');
+          });
+        });
+
+        // Spacebar shortcut to start grabbing when no modal/input is open
+        window.addEventListener('keydown', (e) => {
+          if (e.code !== 'Space') return;
+          const tag = (document.activeElement?.tagName || '').toUpperCase();
+          if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+          const modalOpen = ['manageModal', 'historyModal', 'settingsModal', 'dialogModal'].some(
+            id => !document.getElementById(id).classList.contains('hidden')
+          );
+          if (modalOpen) return;
+          e.preventDefault();
+          if (!this.isRunning) this.startGrab();
+        });
+      }
+    };
+
+    window.addEventListener('load', () => App.init());
+  })();
+  </script>
+</body>
+</html>
