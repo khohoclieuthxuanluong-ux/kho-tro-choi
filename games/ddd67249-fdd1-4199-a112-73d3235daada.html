@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ĐƯỜNG ĐUA THÚ CƯNG | XL GAME LEARNING - Trường Tiểu học Xuân Lương</title>
+  <style>
+    /* =========================================================================
+       1. DESIGN SYSTEM - PREMIUM CARTOON 2.5D EDUCATIONAL GAME (100% OFFLINE)
+       ========================================================================= */
+    :root {
+      --font-game: 'Segoe UI Rounded', 'Quicksand', 'Nunito', 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --blue-1: #3b82f6;
+      --blue-2: #1d4ed8;
+      --orange-1: #ff9933;
+      --orange-2: #ea580c;
+      --green-1: #22c55e;
+      --green-2: #15803d;
+      --purple-1: #a855f7;
+      --purple-2: #6d28d9;
+      --gold-1: #fde047;
+      --gold-2: #f59e0b;
+      --gold-3: #b45309;
+      --pink-1: #f472b6;
+      --pink-2: #db2777;
+      --ink: #1e293b;
+      --muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    input, textarea {
+      user-select: text;
+      font-family: var(--font-game);
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: var(--font-game);
+      background: #0f172a;
+      color: var(--ink);
+    }
+
+    .hidden { display: none !important; }
+
+    /* =========================================================================
+       2. APP SHELL (16:9 TV & PROJECTOR OPTIMIZED)
+       ========================================================================= */
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* TOP CARTOON GAME HEADER */
+    .game-header {
+      background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+      border-bottom: 4px solid #7dd3fc;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.16);
+      padding: 8px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 20;
+      flex-shrink: 0;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-emblem {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 3px 6px rgba(37, 99, 235, 0.28));
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      padding: 2px 10px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 3px;
+    }
+
+    .brand-main {
+      font-size: clamp(19px, 2.2vw, 28px);
+      font-weight: 900;
+      background: linear-gradient(90deg, #ea580c 0%, #db2777 50%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.3px;
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef9c3;
+      border: 2px solid #facc15;
+      color: #854d0e;
+      font-weight: 900;
+      font-size: 13.5px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: inset 0 -2px 0 rgba(202, 138, 4, 0.2);
+    }
+
+    /* 3D GLOSSY CARTOON BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      border-radius: 16px;
+      padding: 8px 14px;
+      font-family: var(--font-game);
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.14s cubic-bezier(.34,1.56,.64,1), box-shadow 0.14s ease, filter 0.14s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(1.05);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(2px) scale(0.98);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+    }
+
+    .btn-green {
+      background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #15803d, 0 6px 14px rgba(22, 163, 74, 0.35);
+    }
+    .btn-green:active:not(:disabled) { box-shadow: 0 1px 0 #15803d; }
+
+    .btn-orange {
+      background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #c2410c, 0 6px 14px rgba(234, 88, 12, 0.35);
+    }
+    .btn-orange:active:not(:disabled) { box-shadow: 0 1px 0 #c2410c; }
+
+    .btn-blue {
+      background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #1d4ed8, 0 6px 14px rgba(37, 99, 235, 0.35);
+    }
+    .btn-blue:active:not(:disabled) { box-shadow: 0 1px 0 #1d4ed8; }
+
+    .btn-purple {
+      background: linear-gradient(180deg, #c084fc 0%, #7c3aed 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #5b21b6, 0 6px 14px rgba(124, 58, 237, 0.35);
+    }
+    .btn-purple:active:not(:disabled) { box-shadow: 0 1px 0 #5b21b6; }
+
+    .btn-gold {
+      background: linear-gradient(180deg, #fde047 0%, #f59e0b 100%);
+      color: #451a03;
+      box-shadow: 0 4px 0 #b45309, 0 6px 14px rgba(245, 158, 11, 0.35);
+    }
+    .btn-gold:active:not(:disabled) { box-shadow: 0 1px 0 #b45309; }
+
+    .btn-soft {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      color: var(--ink);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 0 #94a3b8;
+    }
+    .btn-soft:active:not(:disabled) { box-shadow: 0 1px 0 #94a3b8; }
+
+    .btn-danger {
+      background: linear-gradient(180deg, #f87171 0%, #dc2626 100%);
+      color: #fff;
+      box-shadow: 0 4px 0 #991b1b;
+    }
+
+    .btn-lg {
+      font-size: 20px;
+      padding: 14px 30px;
+      border-radius: 22px;
+      box-shadow: 0 6px 0 #c2410c, 0 12px 26px rgba(234, 88, 12, 0.42);
+    }
+
+    /* =========================================================================
+       3. MAIN GAME STAGE (CANVAS)
+       ========================================================================= */
+    .stage-wrap {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #38bdf8;
+    }
+
+    #raceCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Live commentary banner at top center of canvas */
+    .race-banner {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      border: 3px solid rgba(253, 224, 71, 0.85);
+      border-radius: 999px;
+      padding: 7px 24px;
+      font-size: clamp(14px, 1.5vw, 19px);
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+      z-index: 10;
+      text-align: center;
+      white-space: nowrap;
+      max-width: 92%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Floating Start CTA card when idle */
+    .idle-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 12;
+      padding: 16px;
+    }
+
+    .idle-card {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(8px);
+      border: 5px solid #fde047;
+      border-radius: 32px;
+      padding: 22px 34px;
+      text-align: center;
+      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.35);
+      max-width: 540px;
+      animation: popIn 0.35s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .idle-card h2 {
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 900;
+      color: #ea580c;
+      margin-bottom: 6px;
+    }
+
+    .idle-card p {
+      font-size: 15px;
+      font-weight: 800;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .space-hint {
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #64748b;
+    }
+
+    /* Footer Identity Bar */
+    .game-footer {
+      background: linear-gradient(90deg, #1e3a8a 0%, #312e81 50%, #1e3a8a 100%);
+      color: #e0f2fe;
+      padding: 6px 16px;
+      font-size: 12.5px;
+      font-weight: 800;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      z-index: 20;
+      flex-shrink: 0;
+      border-top: 3px solid #60a5fa;
+    }
+    .game-footer strong { color: #fde047; }
+
+    /* =========================================================================
+       4. WINNER CELEBRATION OVERLAY + 10S COUNTDOWN TIMER
+       ========================================================================= */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 105;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .winner-backdrop {
+      background: radial-gradient(circle at center, rgba(251, 191, 36, 0.35), rgba(15, 23, 42, 0.86));
+      z-index: 104;
+    }
+
+    .winner-card {
+      position: relative;
+      z-index: 106;
+      width: min(760px, 96vw);
+      max-height: 94vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #fffef5 0%, #ffffff 48%, #fef9c3 100%);
+      border: 6px solid #f59e0b;
+      border-radius: 36px;
+      padding: 22px 26px 22px;
+      text-align: center;
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.48), 0 0 55px rgba(251, 191, 36, 0.45);
+      animation: popIn 0.45s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .podium-stage {
+      width: 240px;
+      height: 138px;
+      margin: 0 auto 4px;
+      display: block;
+    }
+
+    .winner-congrats {
+      font-size: clamp(22px, 2.6vw, 32px);
+      font-weight: 900;
+      color: #d97706;
+      letter-spacing: 2px;
+    }
+
+    .winner-name {
+      font-size: clamp(38px, 6vw, 70px);
+      font-weight: 900;
+      line-height: 1.12;
+      margin: 4px 0 6px;
+      background: linear-gradient(180deg, #1d4ed8 0%, #7c3aed 60%, #db2777 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      word-break: break-word;
+      animation: namePop 0.55s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .winner-encourage {
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 14px;
+    }
+
+    /* 10-Second Answer Countdown Timer */
+    .timer-box {
+      background: #f8fafc;
+      border: 3px solid #bae6fd;
+      border-radius: 24px;
+      padding: 12px 18px;
+      margin: 0 auto 14px;
+      max-width: 520px;
+    }
+
+    .timer-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: #0369a1;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .timer-number {
+      font-size: clamp(46px, 6.5vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: #16a34a;
+      font-variant-numeric: tabular-nums;
+      margin: 2px 0 8px;
+      transition: color 0.25s ease;
+    }
+    .timer-number.warn { color: #ea580c; }
+    .timer-number.done { color: #dc2626; font-size: clamp(28px, 4vw, 40px); }
+
+    .timer-progress-bg {
+      width: 100%;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .timer-progress-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #22c55e, #3b82f6);
+      border-radius: 999px;
+      transition: width 0.2s linear;
+    }
+
+    .timer-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .winner-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    /* =========================================================================
+       5. STANDARD MODALS (LIST, HISTORY, DIALOG)
+       ========================================================================= */
+    .modal-box {
+      width: min(640px, 95vw);
+      max-height: 88vh;
+      background: #ffffff;
+      border: 4px solid #93c5fd;
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.38);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: popIn 0.25s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .modal-header {
+      padding: 14px 20px;
+      background: linear-gradient(90deg, #eff6ff, #f5f3ff);
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1e3a8a;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      background: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      color: #475569;
+      cursor: pointer;
+    }
+    .modal-close:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+
+    .modal-body {
+      padding: 16px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-footer {
+      padding: 12px 20px;
+      background: #f8fafc;
+      border-top: 2px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .list-textarea {
+      width: 100%;
+      min-height: 220px;
+      border: 2px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.55;
+      color: var(--ink);
+      outline: none;
+      resize: vertical;
+    }
+    .list-textarea:focus { border-color: #3b82f6; }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #f0f9ff;
+      border: 2px solid #bae6fd;
+      border-radius: 14px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      color: #0c4a6e;
+    }
+    .toggle-row input { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 10px 14px;
+      font-weight: 800;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 44px;
+      right: 18px;
+      background: #1e293b;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+      z-index: 200;
+      animation: popIn 0.25s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.85) translateY(14px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes namePop {
+      0% { opacity: 0; transform: scale(0.45); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 820px) {
+      .game-header { padding: 6px 10px; }
+      .btn { padding: 6px 10px; font-size: 12.5px; border-radius: 12px; }
+      .brand-emblem { width: 38px; height: 38px; }
+      .game-footer { font-size: 11px; justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container" id="appRoot">
+    <!-- =====================================================================
+         TOP HEADER & CONTROLS
+         ===================================================================== -->
+    <header class="game-header">
+      <div class="brand-box">
+        <!-- Inline SVG Logo XL GAME LEARNING -->
+        <svg class="brand-emblem" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Logo XL GAME LEARNING">
+          <defs>
+            <linearGradient id="xlLogoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="55%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="72" height="72" rx="22" fill="url(#xlLogoGrad)"/>
+          <rect x="9" y="9" width="62" height="62" rx="18" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.7"/>
+          <path d="M24 21 L40 12 L56 21 L52 30 L28 30 Z" fill="#fde047" stroke="#b45309" stroke-width="2" stroke-linejoin="round"/>
+          <text x="40" y="56" text-anchor="middle" fill="#ffffff" font-family="Trebuchet MS, sans-serif" font-weight="900" font-size="28">XL</text>
+        </svg>
+        <div class="brand-titles">
+          <span class="brand-sub">XL GAME LEARNING • HỌC MÀ CHƠI – CHƠI MÀ HỌC</span>
+          <h1 class="brand-main">ĐƯỜNG ĐUA THÚ CƯNG</h1>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <div class="status-pill" id="statusPill">Còn lại: 0/0</div>
+        <button class="btn btn-green" id="btnStart">Bắt đầu cuộc đua</button>
+        <button class="btn btn-orange" id="btnNext">Lượt tiếp theo</button>
+        <button class="btn btn-blue" id="btnList">Nhập danh sách</button>
+        <button class="btn btn-purple" id="btnHistory">Lịch sử</button>
+        <button class="btn btn-gold" id="btnResetRound">Đặt lại vòng chọn</button>
+        <button class="btn btn-soft" id="btnSound">Âm thanh: Bật</button>
+        <button class="btn btn-soft" id="btnFullscreen">Toàn màn hình</button>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         MAIN INTERACTIVE 2.5D CANVAS STAGE
+         ===================================================================== -->
+    <main class="stage-wrap" id="stageWrap">
+      <canvas id="raceCanvas"></canvas>
+      <div class="race-banner hidden" id="raceBanner">Các bạn thú cưng đã vào vị trí xuất phát!</div>
+
+      <div class="idle-overlay" id="idleOverlay">
+        <div class="idle-card">
+          <h2>ĐƯỜNG ĐUA THÚ CƯNG</h2>
+          <p id="idleSubtitle">Sẵn sàng cho cuộc đua đầy hồi hộp và bất ngờ của các bạn nhỏ!</p>
+          <button class="btn btn-orange btn-lg" id="btnStartBig">BẮT ĐẦU CUỘC ĐUA</button>
+          <div class="space-hint">Mẹo: Thầy cô có thể nhấn phím <strong>Space</strong> để bắt đầu nhanh</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- =====================================================================
+         FOOTER IDENTITY BAR
+         ===================================================================== -->
+    <footer class="game-footer">
+      <div><strong>XL GAME LEARNING</strong> • Trường Tiểu học Xuân Lương • Thiết kế và phát triển: <strong>Ninh Tiến Hùng</strong></div>
+      <div>Khẩu hiệu: <strong>Học mà chơi – Chơi mà học</strong></div>
+    </footer>
+  </div>
+
+  <!-- =====================================================================
+       WINNER CELEBRATION OVERLAY + 10S ANSWER TIMER
+       ===================================================================== -->
+  <canvas id="confettiCanvas" class="hidden"></canvas>
+  <div class="modal-backdrop winner-backdrop hidden" id="winnerModal" role="dialog" aria-modal="true">
+    <div class="winner-card">
+      <canvas id="podiumCanvas" class="podium-stage" width="480" height="276"></canvas>
+      <div class="winner-congrats">CHÚC MỪNG!</div>
+      <div class="winner-name" id="winnerNameEl">NGUYỄN MINH ANH</div>
+      <div class="winner-encourage">“Hãy tự tin thể hiện kiến thức của mình nhé!”</div>
+
+      <!-- Đồng hồ đếm ngược 10 giây trả lời -->
+      <div class="timer-box">
+        <div class="timer-title">Đồng hồ đếm ngược trả lời câu hỏi</div>
+        <div class="timer-number" id="timerDisplay">10</div>
+        <div class="timer-progress-bg">
+          <div class="timer-progress-fill" id="timerFill"></div>
+        </div>
+        <div class="timer-btns">
+          <button class="btn btn-green" id="btnTimerStart">Bắt đầu đếm giờ</button>
+          <button class="btn btn-gold hidden" id="btnTimerPause">Tạm dừng</button>
+          <button class="btn btn-soft" id="btnTimerReset">Đặt lại</button>
+        </div>
+      </div>
+
+      <div class="winner-actions">
+        <button class="btn btn-orange btn-lg" id="btnWinnerNext">Lượt tiếp theo</button>
+        <button class="btn btn-soft" id="btnWinnerClose">Xem lại đường đua</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL NHẬP DANH SÁCH NGƯỜI THAM GIA (1 - 60 NGƯỜI)
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="listModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Nhập danh sách người tham gia (1 – 60 người)</h3>
+        <button class="modal-close" data-close="listModal">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13.5px; font-weight:800; color:#475569; margin-bottom:8px;">
+          Mỗi tên viết trên một dòng (có thể dán trực tiếp từ Word hoặc Excel). Dữ liệu được lưu an toàn ngay trên máy tính.
+        </p>
+        <textarea id="studentListInput" class="list-textarea" placeholder="Nguyễn Minh Anh&#10;Trần Bảo An&#10;Lê Gia Bảo..."></textarea>
+        <div id="listCountHint" style="font-size:13px; font-weight:800; color:#2563eb; margin-top:6px;"></div>
+
+        <label class="toggle-row">
+          <span>Chế độ lựa chọn không trùng lặp trong một vòng</span>
+          <input type="checkbox" id="chkNoRepeat" checked />
+        </label>
+      </div>
+      <div class="modal-footer" style="justify-content:space-between;">
+        <button class="btn btn-soft" id="btnLoadSample">Dùng danh sách mẫu</button>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-soft" data-close="listModal">Hủy</button>
+          <button class="btn btn-blue" id="btnSaveList">Lưu danh sách</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL LỊCH SỬ LỰA CHỌN
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="historyModal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="width:min(520px, 95vw);">
+      <div class="modal-header">
+        <h3>Lịch sử lựa chọn</h3>
+        <button class="modal-close" data-close="historyModal">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="historySummary" style="font-weight:900; color:#1e3a8a; margin-bottom:10px;"></div>
+        <div class="history-list" id="historyListEl"></div>
+      </div>
+      <div class="modal-footer" style="justify-content:space-between;">
+        <button class="btn btn-danger" id="btnClearHistory">Đặt lại vòng chọn</button>
+        <button class="btn btn-blue" data-close="historyModal">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL HỘP THOẠI XÁC NHẬN (KHÔNG DÙNG ALERT/CONFIRM)
+       ===================================================================== -->
+  <div class="modal-backdrop hidden" id="dialogModal" role="dialog" aria-modal="true" style="z-index:160;">
+    <div class="modal-box" style="width:min(460px, 94vw);">
+      <div class="modal-header">
+        <h3 id="dialogTitle">Thông báo</h3>
+      </div>
+      <div class="modal-body">
+        <p id="dialogMessage" style="font-size:16px; font-weight:800; color:#334155; line-height:1.5;"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-soft" id="dialogCancelBtn">Hủy</button>
+        <button class="btn btn-blue" id="dialogOkBtn">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toastEl"></div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    /* =========================================================================
+       1. FAIR RANDOM ENGINE (CRYPTO.GETRANDOMVALUES - UNBIASED REJECTION)
+       ========================================================================= */
+    const FairRandom = {
+      int(max) {
+        if (max <= 1) return 0;
+        if (window.crypto && window.crypto.getRandomValues) {
+          const range = 0xFFFFFFFF;
+          const limit = range - (range % max);
+          const buf = new Uint32Array(1);
+          let val;
+          do {
+            window.crypto.getRandomValues(buf);
+            val = buf[0];
+          } while (val >= limit);
+          return val % max;
+        }
+        return Math.floor(Math.random() * max);
+      },
+      float() {
+        if (window.crypto && window.crypto.getRandomValues) {
+          const buf = new Uint32Array(1);
+          window.crypto.getRandomValues(buf);
+          return buf[0] / 4294967296;
+        }
+        return Math.random();
+      },
+      pick(arr) {
+        return arr && arr.length ? arr[this.int(arr.length)] : null;
+      },
+      shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = this.int(i + 1);
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+    };
+
+    /* =========================================================================
+       2. WEB AUDIO API SOUND ENGINE (100% PROCEDURAL, OFFLINE, SAFE VOLUME)
+       ========================================================================= */
+    const Sound = {
+      ctx: null,
+      enabled: true,
+      bgmTimer: null,
+      bgmStep: 0,
+
+      unlock() {
+        try {
+          if (!this.ctx) {
+            const AC = window.AudioContext || window.webkitAudioContext;
+            if (AC) this.ctx = new AC();
+          }
+          if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume();
+          }
+        } catch (e) {}
+      },
+
+      tone(freq, dur = 0.14, type = 'triangle', vol = 0.22, delay = 0, slideTo = null) {
+        if (!this.enabled) return;
+        this.unlock();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime + delay;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, now);
+          if (slideTo) {
+            osc.frequency.exponentialRampToValueAtTime(Math.max(40, slideTo), now + dur);
+          }
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(vol, now + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + dur + 0.02);
+        } catch (e) {}
+      },
+
+      click() { this.tone(620, 0.06, 'triangle', 0.14, 0, 820); },
+
+      countdown(isGo = false) {
+        if (isGo) {
+          this.tone(784, 0.18, 'triangle', 0.25, 0, 1046);
+          this.tone(1046.5, 0.30, 'sine', 0.24, 0.08);
+        } else {
+          this.tone(523.25, 0.15, 'triangle', 0.22);
+        }
+      },
+
+      // Nhạc nền vui nhộn khi cuộc đua diễn ra (tăng nhịp khi gần đích)
+      startRaceMusic() {
+        this.stopRaceMusic();
+        if (!this.enabled) return;
+        const melody = [523, 659, 784, 659, 587, 698, 880, 784, 659, 784, 1046, 880, 784, 659, 587, 659];
+        const bass   = [261, 261, 329, 329, 293, 293, 392, 392];
+        this.bgmStep = 0;
+        const tick = () => {
+          if (!this.enabled || !App.isRunning) { this.stopRaceMusic(); return; }
+          const progress = App.raceProgress || 0;
+          const isFinalStretch = progress > 0.68;
+          const note = melody[this.bgmStep % melody.length] * (isFinalStretch ? 1.122 : 1); // lên 1 cung cho hồi hộp!
+          const bNote = bass[this.bgmStep % bass.length] * (isFinalStretch ? 1.122 : 1);
+          this.tone(note, 0.13, 'triangle', isFinalStretch ? 0.12 : 0.09);
+          if (this.bgmStep % 2 === 0) {
+            this.tone(bNote, 0.16, 'sine', 0.08);
+          }
+          this.bgmStep++;
+          const interval = isFinalStretch ? 155 : 225;
+          this.bgmTimer = setTimeout(tick, interval);
+        };
+        tick();
+      },
+
+      stopRaceMusic() {
+        if (this.bgmTimer) {
+          clearTimeout(this.bgmTimer);
+          this.bgmTimer = null;
+        }
+      },
+
+      twistSprint() {
+        this.tone(440, 0.14, 'sine', 0.18, 0, 290);
+        this.tone(330, 0.25, 'triangle', 0.22, 0.12, 880);
+      },
+
+      winFanfare() {
+        const notes = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
+        const times = [0, 0.10, 0.20, 0.32, 0.48, 0.60];
+        const durs  = [0.12, 0.12, 0.12, 0.18, 0.12, 0.45];
+        notes.forEach((n, i) => this.tone(n, durs[i], 'triangle', 0.25, times[i]));
+        this.applause();
+      },
+
+      applause() {
+        if (!this.enabled) return;
+        this.unlock();
+        if (!this.ctx) return;
+        try {
+          for (let i = 0; i < 16; i++) {
+            const delay = 0.18 + i * 0.08 + Math.random() * 0.03;
+            const dur = 0.055;
+            const sr = this.ctx.sampleRate;
+            const buffer = this.ctx.createBuffer(1, Math.floor(sr * dur), sr);
+            const data = buffer.getChannelData(0);
+            for (let j = 0; j < data.length; j++) {
+              data[j] = (Math.random() * 2 - 1) * Math.exp(-j / (data.length * 0.32));
+            }
+            const src = this.ctx.createBufferSource();
+            src.buffer = buffer;
+            const filter = this.ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 1000 + Math.random() * 700;
+            const gain = this.ctx.createGain();
+            gain.gain.value = 0.12;
+            src.connect(filter);
+            filter.connect(gain);
+            gain.connect(this.ctx.destination);
+            src.start(this.ctx.currentTime + delay);
+          }
+        } catch (e) {}
+      },
+
+      timerTick(urgent = false) {
+        this.tone(urgent ? 880 : 660, 0.07, 'triangle', urgent ? 0.18 : 0.12);
+      },
+
+      timeUp() {
+        this.tone(660, 0.16, 'triangle', 0.22, 0);
+        this.tone(523, 0.16, 'triangle', 0.22, 0.18);
+        this.tone(392, 0.34, 'triangle', 0.24, 0.36);
+      }
+    };
+
+    /* =========================================================================
+       3. LOCAL STORAGE DATA STORE (1 - 60 PARTICIPANTS, NO-REPEAT MODE)
+       ========================================================================= */
+    const STORAGE_KEY = 'xl_pet_race_standalone_v1';
+
+    const SAMPLE_NAMES = [
+      'Nguyễn Minh Anh', 'Trần Bảo An', 'Lê Gia Bảo', 'Phạm Ngọc Diệp',
+      'Hoàng Đức Duy', 'Vũ Thảo Linh', 'Đặng Quang Minh', 'Bùi Khánh Ngọc',
+      'Đỗ Hoàng Phúc', 'Ngô Phương Thảo', 'Dương Tuấn Kiệt', 'Lý Hải Đăng',
+      'Trịnh Bảo Hân', 'Phan Anh Quân', 'Tạ Yến Nhi', 'Nguyễn Nhật Huy'
+    ];
+
+    const Store = {
+      state: {
+        participants: [], // { id, name, called }
+        noRepeat: true,
+        soundEnabled: true,
+        history: [] // { id, name, time }
+      },
+
+      load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && Array.isArray(parsed.participants) && parsed.participants.length > 0) {
+              this.state = {
+                participants: parsed.participants.slice(0, 60),
+                noRepeat: parsed.noRepeat !== false,
+                soundEnabled: parsed.soundEnabled !== false,
+                history: Array.isArray(parsed.history) ? parsed.history : []
+              };
+            } else {
+              this.loadSamples();
+            }
+          } else {
+            this.loadSamples();
+          }
+        } catch (e) {
+          this.loadSamples();
+        }
+        Sound.enabled = this.state.soundEnabled;
+        this.save();
+      },
+
+      loadSamples() {
+        this.state.participants = SAMPLE_NAMES.map((name, i) => ({
+          id: 'p_' + (i + 1) + '_' + Date.now(),
+          name,
+          called: false
+        }));
+        this.state.history = [];
+      },
+
+      save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
+        } catch (e) {}
+      },
+
+      getEligible() {
+        if (!this.state.noRepeat) return this.state.participants.slice();
+        return this.state.participants.filter(p => !p.called);
+      },
+
+      /** Hiển thị tên đầy đủ, tự phân biệt nếu có trùng tên */
+      getDisplayName(person) {
+        if (!person) return '';
+        const norm = person.name.trim().toLowerCase();
+        const same = this.state.participants.filter(p => p.name.trim().toLowerCase() === norm);
+        if (same.length > 1) {
+          const idx = same.findIndex(p => p.id === person.id) + 1;
+          return `${person.name} (#${idx})`;
+        }
+        return person.name;
+      },
+
+      /** Tên gọn trên đường đua nhưng vẫn rõ ràng từ cuối lớp */
+      getTrackName(person) {
+        const full = this.getDisplayName(person);
+        const parts = full.split(/\s+/);
+        if (parts.length >= 3 && full.length > 16) {
+          return parts.slice(-2).join(' ');
+        }
+        return full;
+      },
+
+      markWinner(person) {
+        const found = this.state.participants.find(p => p.id === person.id);
+        if (found) found.called = true;
+        this.state.history.unshift({
+          id: person.id,
+          name: this.getDisplayName(person),
+          time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+        });
+        if (this.state.history.length > 200) this.state.history.length = 200;
+        this.save();
+      },
+
+      resetRound() {
+        this.state.participants.forEach(p => { p.called = false; });
+        this.state.history = [];
+        this.save();
+      }
+    };
+
+    /* =========================================================================
+       4. 2.5D CARTOON GRAPHICS ENGINE (CHIBI PETS, PARK, GRANDSTAND, TROPHY)
+       ========================================================================= */
+    const PET_TYPES = ['bunny', 'panda', 'cat', 'dog', 'fox', 'squirrel', 'tiger', 'dino'];
+
+    const Graphics = {
+      roundRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
+        ctx.closePath();
+      },
+
+      drawCloud(ctx, x, y, s = 1) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(s, s);
+        ctx.fillStyle = 'rgba(255,255,255,0.92)';
+        ctx.beginPath();
+        ctx.arc(0, 0, 22, 0, Math.PI * 2);
+        ctx.arc(22, -8, 28, 0, Math.PI * 2);
+        ctx.arc(48, 0, 22, 0, Math.PI * 2);
+        ctx.arc(24, 9, 23, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      },
+
+      drawTree(ctx, x, y, s = 1) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(s, s);
+        // Trunk
+        ctx.fillStyle = '#92400e';
+        this.roundRect(ctx, -6, 0, 12, 26, 4);
+        ctx.fill();
+        // Layered foliage with 2.5D highlight
+        ctx.fillStyle = '#15803d';
+        ctx.beginPath(); ctx.arc(0, -10, 23, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.arc(-13, -1, 16, 0, Math.PI * 2); ctx.arc(13, -1, 16, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#4ade80';
+        ctx.beginPath(); ctx.arc(-6, -15, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      },
+
+      drawFlower(ctx, x, y, color, s = 1) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(s, s);
+        ctx.fillStyle = color;
+        for (let i = 0; i < 5; i++) {
+          const a = (i / 5) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.arc(Math.cos(a) * 5, Math.sin(a) * 5, 3.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath(); ctx.arc(0, 0, 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      },
+
+      /** Vẽ khán đài công viên với khán giả cổ vũ & cờ nhiều màu */
+      drawGrandstand(ctx, x, y, w, h, time) {
+        ctx.save();
+        // Roof awning
+        ctx.fillStyle = '#ef4444';
+        this.roundRect(ctx, x - 10, y, w + 20, 18, 8);
+        ctx.fill();
+        // White stripes on awning
+        ctx.fillStyle = '#ffffff';
+        for (let sx = x; sx < x + w; sx += 26) {
+          ctx.fillRect(sx, y, 12, 18);
+        }
+        // Back wall
+        ctx.fillStyle = '#fef3c7';
+        ctx.fillRect(x, y + 18, w, h - 18);
+        ctx.strokeStyle = '#d97706';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y + 18, w, h - 18);
+
+        // Cheering cute audience heads
+        const colors = ['#3b82f6', '#ec4899', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ef4444'];
+        const cols = Math.floor((w - 16) / 18);
+        for (let row = 0; row < 2; row++) {
+          for (let c = 0; c < cols; c++) {
+            const cx = x + 16 + c * 18;
+            const hop = Math.abs(Math.sin(time * 5.5 + c * 0.9 + row * 2)) * 4;
+            const cy = y + 32 + row * 17 - hop;
+            ctx.fillStyle = colors[(c + row * 3) % colors.length];
+            ctx.beginPath(); ctx.arc(cx, cy + 7, 7, Math.PI, 0); ctx.fill();
+            ctx.fillStyle = '#fed7aa';
+            ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+        ctx.restore();
+      },
+
+      /** Dây cờ tam giác nhiều màu phấp phới */
+      drawBuntingFlags(ctx, x1, y1, x2, y2, time) {
+        ctx.save();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.quadraticCurveTo((x1 + x2) / 2, Math.max(y1, y2) + 22, x2, y2);
+        ctx.stroke();
+
+        const flagColors = ['#ef4444', '#f59e0b', '#fde047', '#22c55e', '#3b82f6', '#ec4899', '#a855f7'];
+        const count = 14;
+        for (let i = 1; i < count; i++) {
+          const u = i / count;
+          const fx = x1 + (x2 - x1) * u;
+          const fy = y1 + (y2 - y1) * u + Math.sin(u * Math.PI) * 11;
+          const sway = Math.sin(time * 5 + i) * 3;
+          ctx.fillStyle = flagColors[i % flagColors.length];
+          ctx.beginPath();
+          ctx.moveTo(fx - 7, fy);
+          ctx.lineTo(fx + 7, fy);
+          ctx.lineTo(fx + sway, fy + 15);
+          ctx.closePath();
+          ctx.fill();
+        }
+        ctx.restore();
+      },
+
+      /** Vẽ bảng tên rõ nét cho từng thú cưng */
+      drawNameBadge(ctx, text, x, y, maxW, isLeader = false, fontSize = 15) {
+        ctx.save();
+        let fs = fontSize;
+        const fontFam = getComputedStyle(document.body).fontFamily;
+        ctx.font = `900 ${fs}px ${fontFam}`;
+        let tw = ctx.measureText(text).width;
+        while (tw > maxW - 22 && fs > 11) {
+          fs -= 1;
+          ctx.font = `900 ${fs}px ${fontFam}`;
+          tw = ctx.measureText(text).width;
+        }
+        const w = Math.min(maxW, tw + 22);
+        const h = fs + 12;
+
+        // Soft drop shadow
+        ctx.shadowColor = 'rgba(15, 23, 42, 0.25)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+
+        this.roundRect(ctx, x - w / 2, y - h / 2, w, h, h / 2);
+        ctx.fillStyle = isLeader ? '#fef08a' : 'rgba(255, 255, 255, 0.96)';
+        ctx.fill();
+
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetY = 0;
+        ctx.lineWidth = isLeader ? 3 : 2;
+        ctx.strokeStyle = isLeader ? '#f59e0b' : '#3b82f6';
+        ctx.stroke();
+
+        ctx.fillStyle = isLeader ? '#9a3412' : '#0f172a';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, x, y + 0.5, w - 12);
+        ctx.restore();
+      },
+
+      /** Vẽ 8 loài thú cưng chibi 2.5D siêu dễ thương có bóng đổ, ánh sáng và chuyển động chân */
+      drawChibiPet(ctx, petIdx, x, y, scale = 1, runPhase = 0, sprinting = false, isLeader = false) {
+        const type = PET_TYPES[petIdx % PET_TYPES.length];
+        const bob = Math.abs(Math.sin(runPhase)) * (sprinting ? -8 : -5.5);
+        const legSwing = Math.sin(runPhase) * (sprinting ? 11 : 8);
+        const tilt = sprinting ? 0.08 : Math.sin(runPhase) * 0.03;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+
+        // Ground shadow
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.24)';
+        ctx.beginPath();
+        ctx.ellipse(0, 22, 23 - Math.abs(bob) * 0.6, 7, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Sprint speed lines behind pet
+        if (sprinting) {
+          ctx.strokeStyle = 'rgba(254, 240, 138, 0.85)';
+          ctx.lineWidth = 3;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(-26, -6); ctx.lineTo(-48, -6);
+          ctx.moveTo(-24, 6); ctx.lineTo(-56, 6);
+          ctx.moveTo(-22, 14); ctx.lineTo(-42, 14);
+          ctx.stroke();
+        }
+
+        ctx.translate(0, bob);
+        ctx.rotate(tilt);
+
+        const styles = {
+          bunny:    { main: '#ffffff', light: '#ffffff', shade: '#e2e8f0', ear: '#f9a8d4', stroke: '#94a3b8' },
+          panda:    { main: '#ffffff', light: '#ffffff', shade: '#e2e8f0', ear: '#1e293b', stroke: '#334155' },
+          cat:      { main: '#fb923c', light: '#fdba74', shade: '#ea580c', ear: '#fed7aa', stroke: '#9a3412' },
+          dog:      { main: '#fcd34d', light: '#fef08a', shade: '#d97706', ear: '#b45309', stroke: '#92400e' },
+          fox:      { main: '#f97316', light: '#fdba74', shade: '#c2410c', ear: '#fff7ed', stroke: '#9a3412' },
+          squirrel: { main: '#b4693a', light: '#d9986c', shade: '#7c3f1c', ear: '#fde68a', stroke: '#5c2d12' },
+          tiger:    { main: '#f59e0b', light: '#fcd34d', shade: '#b45309', ear: '#fef3c7', stroke: '#78350f' },
+          dino:     { main: '#34d399', light: '#6ee7b7', shade: '#059669', ear: '#fbbf24', stroke: '#065f46' }
+        };
+        const st = styles[type];
+
+        // Tail
+        ctx.fillStyle = (type === 'fox' || type === 'squirrel') ? st.main : st.shade;
+        ctx.strokeStyle = st.stroke;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (type === 'squirrel') {
+          ctx.ellipse(-20, -2, 12, 16, -0.4, 0, Math.PI * 2);
+        } else if (type === 'fox') {
+          ctx.ellipse(-21, 5, 14, 7, -0.35, 0, Math.PI * 2);
+        } else {
+          ctx.arc(-19, 8, 6, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        ctx.stroke();
+
+        // Back legs (running motion)
+        ctx.fillStyle = st.shade;
+        ctx.beginPath(); ctx.ellipse(-8 - legSwing * 0.65, 16, 6.5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(9 + legSwing * 0.65, 16, 6.5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        // 2.5D Shaded Body
+        const bodyGrad = ctx.createRadialGradient(-4, 2, 3, -2, 8, 20);
+        bodyGrad.addColorStop(0, st.light);
+        bodyGrad.addColorStop(0.75, st.main);
+        bodyGrad.addColorStop(1, st.shade);
+        ctx.fillStyle = bodyGrad;
+        ctx.beginPath();
+        ctx.ellipse(-2, 8, 17, 13, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Front paws (running motion)
+        ctx.fillStyle = st.main;
+        ctx.beginPath(); ctx.ellipse(-5 + legSwing * 0.7, 17, 6.5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(11 - legSwing * 0.7, 17, 6.5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        // Dino back spikes
+        if (type === 'dino') {
+          ctx.fillStyle = st.ear;
+          for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.moveTo(-16 + i * 7, -2 - i * 2);
+            ctx.lineTo(-12 + i * 7, -11 - i * 2);
+            ctx.lineTo(-8 + i * 7, -2 - i * 2);
+            ctx.closePath();
+            ctx.fill();
+          }
+        }
+
+        // Ears
+        if (type === 'bunny') {
+          [[-1, -21, -0.18], [9, -21, 0.18]].forEach(([ex, ey, rot]) => {
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath(); ctx.ellipse(ex, ey, 4.8, 13, rot, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = st.ear;
+            ctx.beginPath(); ctx.ellipse(ex, ey, 2.3, 8.5, rot, 0, Math.PI * 2); ctx.fill();
+          });
+        } else if (type === 'cat' || type === 'fox') {
+          [[-4, -14], [12, -14]].forEach(([ex, ey]) => {
+            ctx.fillStyle = st.main;
+            ctx.beginPath();
+            ctx.moveTo(ex - 6, ey + 6); ctx.lineTo(ex, ey - 9); ctx.lineTo(ex + 6, ey + 6);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = st.ear;
+            ctx.beginPath();
+            ctx.moveTo(ex - 3, ey + 4); ctx.lineTo(ex, ey - 4); ctx.lineTo(ex + 3, ey + 4);
+            ctx.closePath(); ctx.fill();
+          });
+        } else if (type === 'dog') {
+          ctx.fillStyle = st.ear;
+          ctx.beginPath(); ctx.ellipse(-7, -3, 5.5, 11.5, 0.25, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.ellipse(17, -3, 5.5, 11.5, -0.25, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        } else if (type !== 'dino') {
+          ctx.fillStyle = st.ear;
+          ctx.beginPath(); ctx.arc(-4, -15, 6.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.arc(13, -15, 6.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        }
+
+        // Large Chibi Head with 2.5D lighting
+        const headGrad = ctx.createRadialGradient(1, -10, 3, 5, -4, 18);
+        headGrad.addColorStop(0, st.light);
+        headGrad.addColorStop(0.75, st.main);
+        headGrad.addColorStop(1, st.shade);
+        ctx.fillStyle = headGrad;
+        ctx.beginPath();
+        ctx.arc(5, -4, 15.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Tiger stripes
+        if (type === 'tiger') {
+          ctx.strokeStyle = '#1e293b';
+          ctx.lineWidth = 2.2;
+          ctx.beginPath();
+          ctx.moveTo(2, -18); ctx.lineTo(2, -12);
+          ctx.moveTo(7, -19); ctx.lineTo(7, -12);
+          ctx.moveTo(12, -18); ctx.lineTo(11, -12);
+          ctx.stroke();
+        }
+
+        // Panda eye patches
+        if (type === 'panda') {
+          ctx.fillStyle = '#1e293b';
+          ctx.beginPath(); ctx.ellipse(2, -5, 4.8, 3.8, -0.2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(13, -5, 4.8, 3.8, 0.2, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Glossy Chibi Eyes
+        ctx.fillStyle = type === 'panda' ? '#ffffff' : '#0f172a';
+        ctx.beginPath(); ctx.arc(3, -5, 2.7, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(13, -5, 2.7, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(4, -6.2, 1.1, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(14, -6.2, 1.1, 0, Math.PI * 2); ctx.fill();
+
+        // Cute Rosy Cheeks
+        ctx.fillStyle = 'rgba(244, 114, 182, 0.48)';
+        ctx.beginPath(); ctx.arc(-1.5, -0.5, 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(16.5, -0.5, 3.2, 0, Math.PI * 2); ctx.fill();
+
+        // Nose & Smile
+        ctx.fillStyle = type === 'panda' ? '#1e293b' : '#f43f5e';
+        ctx.beginPath(); ctx.ellipse(8.5, -1.8, 2.5, 1.7, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.arc(8.5, 0.5, 3, 0.15 * Math.PI, 0.85 * Math.PI);
+        ctx.stroke();
+
+        // Mini Golden Crown on temporary leader
+        if (isLeader) {
+          ctx.save();
+          ctx.translate(5, -24);
+          ctx.fillStyle = '#fde047';
+          ctx.strokeStyle = '#b45309';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(-8, 4); ctx.lineTo(-10, -4); ctx.lineTo(-4, 0);
+          ctx.lineTo(0, -6); ctx.lineTo(4, 0); ctx.lineTo(10, -4); ctx.lineTo(8, 4);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        ctx.restore();
+      },
+
+      /** Vẽ bục vinh danh + cúp vàng + thú cưng chiến thắng trên màn hình công bố */
+      drawWinnerPodium(petIdx) {
+        const canvas = document.getElementById('podiumCanvas');
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        // Soft golden halo
+        const halo = ctx.createRadialGradient(w / 2, h * 0.45, 15, w / 2, h * 0.45, 130);
+        halo.addColorStop(0, 'rgba(253, 224, 71, 0.55)');
+        halo.addColorStop(1, 'rgba(253, 224, 71, 0)');
+        ctx.fillStyle = halo;
+        ctx.fillRect(0, 0, w, h);
+
+        // 3D Podium Steps
+        // Left step (#2)
+        ctx.fillStyle = '#93c5fd';
+        this.roundRect(ctx, 88, 198, 96, 66, 12);
+        ctx.fill();
+        ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 4; ctx.stroke();
+        // Right step (#3)
+        ctx.fillStyle = '#fca5a5';
+        this.roundRect(ctx, 296, 208, 96, 56, 12);
+        ctx.fill();
+        ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 4; ctx.stroke();
+        // Center 1st-place step
+        const pGrad = ctx.createLinearGradient(0, 160, 0, 265);
+        pGrad.addColorStop(0, '#fde047');
+        pGrad.addColorStop(1, '#f59e0b');
+        ctx.fillStyle = pGrad;
+        this.roundRect(ctx, 178, 162, 124, 102, 16);
+        ctx.fill();
+        ctx.strokeStyle = '#b45309'; ctx.lineWidth = 5; ctx.stroke();
+
+        // Medal "1" on podium
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(240, 214, 24, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#b45309';
+        ctx.font = '900 30px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('1', 240, 216);
+
+        // Winning Chibi Pet standing proudly on 1st place
+        this.drawChibiPet(ctx, petIdx, 232, 124, 1.9, 0, false, true);
+
+        // Gleaming Golden Trophy beside pet
+        ctx.save();
+        ctx.translate(334, 152);
+        ctx.fillStyle = '#f59e0b';
+        ctx.strokeStyle = '#b45309';
+        ctx.lineWidth = 4;
+        // Handles
+        ctx.beginPath(); ctx.arc(-24, -18, 13, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(24, -18, 13, 0, Math.PI * 2); ctx.stroke();
+        // Cup body
+        const cupGrad = ctx.createLinearGradient(-22, -38, 22, 6);
+        cupGrad.addColorStop(0, '#fef08a');
+        cupGrad.addColorStop(0.5, '#fbbf24');
+        cupGrad.addColorStop(1, '#d97706');
+        ctx.fillStyle = cupGrad;
+        ctx.beginPath();
+        ctx.moveTo(-24, -38);
+        ctx.lineTo(24, -38);
+        ctx.quadraticCurveTo(22, 6, 0, 10);
+        ctx.quadraticCurveTo(-22, 6, -24, -38);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        // Stem & Base
+        ctx.fillRect(-7, 10, 14, 18);
+        this.roundRect(ctx, -22, 26, 44, 14, 5);
+        ctx.fill(); ctx.stroke();
+        // Star on cup
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(0, -16, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      }
+    };
+
+    /* =========================================================================
+       5. CONFETTI CELEBRATION ENGINE
+       ========================================================================= */
+    const Confetti = {
+      raf: null,
+      items: [],
+      start() {
+        const c = document.getElementById('confettiCanvas');
+        c.classList.remove('hidden');
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        const ctx = c.getContext('2d');
+        const colors = ['#ef4444', '#f97316', '#fde047', '#22c55e', '#38bdf8', '#a855f7', '#ec4899'];
+        this.items = Array.from({ length: 130 }, () => ({
+          x: Math.random() * c.width,
+          y: -Math.random() * c.height * 0.6,
+          vx: (Math.random() - 0.5) * 4,
+          vy: 2.4 + Math.random() * 4.2,
+          w: 7 + Math.random() * 8,
+          h: 5 + Math.random() * 6,
+          rot: Math.random() * Math.PI * 2,
+          vr: (Math.random() - 0.5) * 0.18,
+          col: colors[Math.floor(Math.random() * colors.length)]
+        }));
+
+        const loop = () => {
+          ctx.clearRect(0, 0, c.width, c.height);
+          for (const p of this.items) {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.rot += p.vr;
+            if (p.y > c.height + 20) {
+              p.y = -15;
+              p.x = Math.random() * c.width;
+            }
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.col;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+          this.raf = requestAnimationFrame(loop);
+        };
+        this.stop();
+        c.classList.remove('hidden');
+        this.raf = requestAnimationFrame(loop);
+      },
+      stop() {
+        if (this.raf) {
+          cancelAnimationFrame(this.raf);
+          this.raf = null;
+        }
+        document.getElementById('confettiCanvas').classList.add('hidden');
+      }
+    };
+
+    /* =========================================================================
+       6. RACE CHOREOGRAPHY (12 SECONDS, MULTIPLE DRAMA TWISTS, FAIR RESULT)
+       ========================================================================= */
+    function computeRacerProgress(p, isWinner, isDecoy, seed, twistMode) {
+      // Natural speed fluctuations so positions constantly change
+      const w1 = Math.sin(p * Math.PI * 3.8 + seed * 5.2) * 0.068;
+      const w2 = Math.cos(p * Math.PI * 6.5 + seed * 3.1) * 0.032;
+
+      if (isWinner) {
+        if (twistMode === 0) {
+          // Chạy ẩn mình giữa đoàn -> bứt tốc ngoạn mục ở 25% cuối vượt qua tất cả!
+          if (p < 0.72) {
+            return Math.max(0, Math.min(0.76, p * 0.89 + w1 * 0.7));
+          }
+          const u = (p - 0.72) / 0.28;
+          return 0.6408 + (1 - 0.6408) * Math.pow(u, 1.32);
+        } else if (twistMode === 1) {
+          // Dẫn sớm -> bị vượt ở đoạn 58%-80% -> lật ngược thế cờ sát vạch đích!
+          const dip = (p > 0.52 && p < 0.84) ? -Math.sin(((p - 0.52) / 0.32) * Math.PI) * 0.13 : 0;
+          return Math.max(0, Math.min(1, Math.pow(p, 0.96) + dip + w1 * 0.55));
+        } else {
+          // Song mã kịch tính đến 86%, rồi cú nước rút cuối cùng bứt lên!
+          const base = p < 0.84
+            ? p * 0.98 + w2
+            : 0.8232 + ((p - 0.84) / 0.16) * 0.1768;
+          return Math.max(0, Math.min(1, base));
+        }
+      } else if (isDecoy) {
+        // Nhân vật đánh lạc hướng: dẫn đầu rất thuyết phục đến 82%, tưởng chừng sắp về đích thì bị vượt!
+        if (p < 0.82) {
+          return Math.max(0, Math.min(0.915, p * 1.095 + 0.035 + w2 * 0.8));
+        }
+        return Math.min(0.968, 0.915 + ((p - 0.82) / 0.18) * 0.053);
+      } else {
+        // Các thú cưng khác: cạnh tranh vui nhộn, có bạn bám sát nhóm đầu
+        const finishCap = 0.74 + (seed * 0.20);
+        return Math.max(0, Math.min(finishCap, p * (finishCap + 0.04) + w1 + w2));
+      }
+    }
+
+    /* =========================================================================
+       7. MAIN APPLICATION CONTROLLER
+       ========================================================================= */
+    const App = {
+      canvas: null,
+      ctx: null,
+      w: 1280,
+      h: 720,
+
+      isRunning: false,
+      rafId: null,
+      startTime: 0,
+      totalDuration: 12, // ~12 giây (2.2s đếm ngược + 9.8s đua)
+      raceProgress: 0,
+
+      racers: [],
+      dustParticles: [],
+      winner: null,
+      winnerPetType: 0,
+      twistMode: 0,
+      lastCountdown: 4,
+      twistTriggered: false,
+      cloudShift: 0,
+      flowers: [],
+
+      // 10-second Answer Timer
+      timerSeconds: 10,
+      timerRunning: false,
+      timerHandle: null,
+
+      init() {
+        Store.load();
+        this.canvas = document.getElementById('raceCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.generateParkDecor();
+        this.resize();
+        this.syncUI();
+        this.preparePreviewRoster();
+        this.bindEvents();
+        this.startLoop();
+        window.addEventListener('resize', () => this.resize());
+      },
+
+      generateParkDecor() {
+        const flowerCols = ['#f43f5e', '#fb923c', '#facc15', '#ec4899', '#a855f7', '#ffffff'];
+        this.flowers = Array.from({ length: 22 }, (_, i) => ({
+          xFrac: 0.03 + (i / 22) * 0.94 + (Math.random() * 0.02),
+          yFrac: 0.27 + Math.random() * 0.06,
+          col: flowerCols[i % flowerCols.length],
+          s: 0.75 + Math.random() * 0.45
+        }));
+      },
+
+      resize() {
+        const wrap = document.getElementById('stageWrap');
+        const rect = wrap.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.w = Math.max(320, rect.width);
+        this.h = Math.max(240, rect.height);
+        this.canvas.width = Math.floor(this.w * dpr);
+        this.canvas.height = Math.floor(this.h * dpr);
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      },
+
+      syncUI() {
+        const total = Store.state.participants.length;
+        const eligible = Store.getEligible().length;
+        document.getElementById('statusPill').textContent = Store.state.noRepeat
+          ? `Còn lại: ${eligible}/${total}`
+          : `Tham gia: ${total} bạn`;
+        document.getElementById('btnSound').textContent = Store.state.soundEnabled ? 'Âm thanh: Bật' : 'Âm thanh: Tắt';
+
+        // Lock conflicting buttons while race is running
+        ['btnStart', 'btnNext', 'btnList', 'btnHistory', 'btnResetRound'].forEach(id => {
+          document.getElementById(id).disabled = this.isRunning;
+        });
+      },
+
+      preparePreviewRoster() {
+        const pool = Store.getEligible();
+        const showPool = pool.length > 0 ? pool : Store.state.participants;
+        const display = FairRandom.shuffle(showPool).slice(0, Math.min(8, showPool.length));
+        const petOrder = FairRandom.shuffle([0, 1, 2, 3, 4, 5, 6, 7]);
+        this.racers = display.map((person, idx) => ({
+          person,
+          label: Store.getTrackName(person),
+          petType: petOrder[idx % petOrder.length],
+          progress: 0,
+          isWinner: false,
+          isDecoy: false,
+          seed: FairRandom.float()
+        }));
+        this.dustParticles = [];
+      },
+
+      async startRace() {
+        if (this.isRunning) return;
+        Sound.unlock();
+
+        if (Store.state.participants.length === 0) {
+          this.toast('Chưa có danh sách người tham gia. Hãy nhập danh sách trước nhé!');
+          this.openListModal();
+          return;
+        }
+
+        let eligible = Store.getEligible();
+        if (eligible.length === 0) {
+          const resetOk = await this.showDialog({
+            title: 'Hoàn thành vòng chọn!',
+            message: 'Tất cả mọi người đều đã được gọi trong vòng này! Thầy cô có muốn đặt lại vòng chọn để bắt đầu vòng mới không?',
+            showCancel: true,
+            okText: 'Đặt lại vòng mới',
+            cancelText: 'Để sau'
+          });
+          if (!resetOk) return;
+          Store.resetRound();
+          this.syncUI();
+          eligible = Store.getEligible();
+        }
+
+        // 1. FAIR SELECTION BEFORE ANIMATION (every eligible participant has 100% equal probability)
+        this.winner = FairRandom.pick(eligible);
+
+        // 2. Build display group (up to 8 lanes for crisp 16:9 TV readability)
+        const others = FairRandom.shuffle(eligible.filter(p => p.id !== this.winner.id));
+        const laneCount = Math.min(8, eligible.length);
+        const selectedGroup = FairRandom.shuffle([this.winner, ...others.slice(0, laneCount - 1)]);
+        const decoyCandidates = selectedGroup.filter(p => p.id !== this.winner.id);
+        const decoyId = decoyCandidates.length ? FairRandom.pick(decoyCandidates).id : null;
+        const petOrder = FairRandom.shuffle([0, 1, 2, 3, 4, 5, 6, 7]);
+
+        this.racers = selectedGroup.map((person, idx) => {
+          const petType = petOrder[idx % petOrder.length];
+          if (person.id === this.winner.id) this.winnerPetType = petType;
+          return {
+            person,
+            label: Store.getTrackName(person),
+            petType,
+            progress: 0,
+            isWinner: person.id === this.winner.id,
+            isDecoy: person.id === decoyId,
+            seed: 0.1 + FairRandom.float() * 0.85
+          };
+        });
+
+        this.twistMode = FairRandom.int(3);
+        this.lastCountdown = 4;
+        this.twistTriggered = false;
+        this.raceProgress = 0;
+        this.dustParticles = [];
+        this.isRunning = true;
+        this.startTime = performance.now();
+
+        this.closeWinnerModal();
+        document.getElementById('idleOverlay').classList.add('hidden');
+        document.getElementById('raceBanner').classList.remove('hidden');
+        this.syncUI();
+      },
+
+      finishRace() {
+        this.isRunning = false;
+        Sound.stopRaceMusic();
+        Store.markWinner(this.winner);
+        this.syncUI();
+        this.openWinnerModal();
+      },
+
+      /* --- Main requestAnimationFrame Loop --- */
+      startLoop() {
+        const tick = (now) => {
+          this.renderFrame(now);
+          this.rafId = requestAnimationFrame(tick);
+        };
+        this.rafId = requestAnimationFrame(tick);
+      },
+
+      renderFrame(now) {
+        const ctx = this.ctx;
+        const w = this.w, h = this.h;
+        const timeSec = now / 1000;
+        this.cloudShift += 0.3;
+
+        // 1. SKY & SUN
+        const sky = ctx.createLinearGradient(0, 0, 0, h * 0.36);
+        sky.addColorStop(0, '#0ea5e9');
+        sky.addColorStop(0.6, '#7dd3fc');
+        sky.addColorStop(1, '#e0f2fe');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, w, h * 0.38);
+
+        // Glowing cartoon sun
+        const sunX = w - 82, sunY = 56;
+        const sunGlow = ctx.createRadialGradient(sunX, sunY, 16, sunX, sunY, 64);
+        sunGlow.addColorStop(0, 'rgba(254, 240, 138, 0.95)');
+        sunGlow.addColorStop(1, 'rgba(254, 240, 138, 0)');
+        ctx.fillStyle = sunGlow;
+        ctx.beginPath(); ctx.arc(sunX, sunY, 64, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath(); ctx.arc(sunX, sunY, 28, 0, Math.PI * 2); ctx.fill();
+
+        // Clouds
+        for (let i = 0; i < 4; i++) {
+          const cx = ((i * w * 0.27 + this.cloudShift * (0.6 + (i % 2) * 0.4)) % (w + 150)) - 75;
+          Graphics.drawCloud(ctx, cx, 36 + (i % 2) * 26, 0.8 + (i % 2) * 0.25);
+        }
+
+        // 2. LAYERED GREEN HILLS
+        ctx.fillStyle = '#86efac';
+        ctx.beginPath();
+        ctx.moveTo(0, h * 0.30);
+        ctx.quadraticCurveTo(w * 0.22, h * 0.18, w * 0.48, h * 0.27);
+        ctx.quadraticCurveTo(w * 0.78, h * 0.35, w, h * 0.22);
+        ctx.lineTo(w, h * 0.38); ctx.lineTo(0, h * 0.38); ctx.fill();
+
+        ctx.fillStyle = '#4ade80';
+        ctx.beginPath();
+        ctx.moveTo(0, h * 0.34);
+        ctx.quadraticCurveTo(w * 0.3, h * 0.24, w * 0.6, h * 0.32);
+        ctx.quadraticCurveTo(w * 0.85, h * 0.38, w, h * 0.28);
+        ctx.lineTo(w, h * 0.38); ctx.lineTo(0, h * 0.38); ctx.fill();
+
+        // Grandstand in the middle background
+        const gsW = Math.min(340, w * 0.32);
+        const gsH = Math.min(72, h * 0.12);
+        const gsX = w * 0.5 - gsW / 2;
+        const gsY = h * 0.34 - gsH + 4;
+        Graphics.drawGrandstand(ctx, gsX, gsY, gsW, gsH, timeSec);
+
+        // Colorful bunting flags on left & right of grandstand
+        Graphics.drawBuntingFlags(ctx, 20, h * 0.18, gsX - 16, gsY + 12, timeSec);
+        Graphics.drawBuntingFlags(ctx, gsX + gsW + 16, gsY + 12, w - 20, h * 0.18, timeSec);
+
+        // Trees & Flowers
+        [0.06, 0.15, 0.26, 0.74, 0.85, 0.94].forEach((xf, i) => {
+          Graphics.drawTree(ctx, w * xf, h * 0.30 + (i % 2) * 6, 0.85 + (i % 2) * 0.18);
+        });
+        for (const fl of this.flowers) {
+          Graphics.drawFlower(ctx, fl.xFrac * w, fl.yFrac * h, fl.col, fl.s);
+        }
+
+        // 3. RACE TRACK (MULTI-LANE)
+        const trackTop = h * 0.35;
+        const trackH = h * 0.60;
+        const startX = Math.max(105, w * 0.11);
+        const finishX = w - Math.max(92, w * 0.095);
+
+        // Grass border top & bottom of track
+        ctx.fillStyle = '#22c55e';
+        ctx.fillRect(0, trackTop - 8, w, 10);
+        ctx.fillRect(0, trackTop + trackH, w, h - (trackTop + trackH));
+
+        const laneCount = Math.max(1, this.racers.length);
+        const laneH = trackH / laneCount;
+
+        for (let i = 0; i < laneCount; i++) {
+          const ly = trackTop + i * laneH;
+          ctx.fillStyle = i % 2 === 0 ? '#fbbf24' : '#f59e0b';
+          ctx.fillRect(0, ly, w, laneH);
+          // Subtle lane number on left
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+          ctx.font = `900 ${Math.max(14, Math.min(22, laneH * 0.35))}px sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(String(i + 1), 26, ly + laneH / 2);
+
+          if (i > 0) {
+            ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+            ctx.lineWidth = 2.5;
+            ctx.setLineDash([14, 10]);
+            ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(w, ly); ctx.stroke();
+            ctx.setLineDash([]);
+          }
+        }
+
+        // Start line
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(startX - 4, trackTop, 7, trackH);
+
+        // Checkered Finish line + Finish Arch
+        const sq = 13;
+        for (let y = trackTop; y < trackTop + trackH; y += sq) {
+          const row = Math.floor((y - trackTop) / sq);
+          ctx.fillStyle = row % 2 === 0 ? '#0f172a' : '#ffffff';
+          ctx.fillRect(finishX, y, sq, Math.min(sq, trackTop + trackH - y));
+          ctx.fillStyle = row % 2 === 0 ? '#ffffff' : '#0f172a';
+          ctx.fillRect(finishX + sq, y, sq, Math.min(sq, trackTop + trackH - y));
+        }
+        // Finish flag post
+        ctx.fillStyle = '#dc2626';
+        Graphics.roundRect(ctx, finishX - 24, trackTop - 32, 74, 24, 8);
+        ctx.fill();
+        ctx.fillStyle = '#fde047';
+        ctx.font = '900 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('VẠCH ĐÍCH', finishX + 13, trackTop - 20);
+
+        // 4. UPDATE RACE TIMELINE (12 SECONDS TOTAL)
+        const cdDur = 2.2; // 2.2s countdown
+        const raceDur = this.totalDuration - cdDur; // 9.8s race
+        let elapsed = 0;
+        let isRacingPhase = false;
+        let bannerText = 'Các bạn thú cưng đã sẵn sàng tại vạch xuất phát!';
+
+        if (this.isRunning) {
+          elapsed = (now - this.startTime) / 1000;
+          if (elapsed < cdDur) {
+            const step = 3 - Math.floor((elapsed / cdDur) * 3);
+            bannerText = `Chuẩn bị xuất phát: ${step}...`;
+            if (step < this.lastCountdown) {
+              this.lastCountdown = step;
+              Sound.countdown(false);
+            }
+          } else {
+            if (this.lastCountdown > 0) {
+              this.lastCountdown = 0;
+              Sound.countdown(true);
+              Sound.startRaceMusic();
+            }
+            isRacingPhase = true;
+            this.raceProgress = Math.min(1, (elapsed - cdDur) / raceDur);
+
+            if (this.raceProgress < 0.45) {
+              bannerText = 'Cuộc đua đang diễn ra cực kỳ sôi động!';
+            } else if (this.raceProgress < 0.72) {
+              bannerText = 'Vị trí dẫn đầu liên tục thay đổi! Gay cấn quá!';
+            } else if (this.raceProgress < 0.96) {
+              bannerText = 'PHA BỨT TỐC NGOẠN MỤC PHÚT CHÓT! AI SẼ VỀ ĐÍCH ĐẦU TIÊN?';
+              if (!this.twistTriggered) {
+                this.twistTriggered = true;
+                Sound.twistSprint();
+              }
+            } else {
+              bannerText = 'ĐÃ CÓ NGƯỜI CÁN ĐÍCH ĐẦU TIÊN!';
+            }
+          }
+          document.getElementById('raceBanner').textContent = bannerText;
+        }
+
+        // Compute progress & find temporary leader
+        let leaderIdx = -1;
+        let maxProg = -1;
+        this.racers.forEach((r, idx) => {
+          r.progress = isRacingPhase
+            ? computeRacerProgress(this.raceProgress, r.isWinner, r.isDecoy, r.seed, this.twistMode)
+            : 0;
+          if (isRacingPhase && r.progress > maxProg) {
+            maxProg = r.progress;
+            leaderIdx = idx;
+          }
+        });
+
+        // 5. DUST PARTICLES BEHIND RUNNING PETS
+        if (isRacingPhase && Math.random() < 0.65) {
+          const rIdx = Math.floor(Math.random() * this.racers.length);
+          const r = this.racers[rIdx];
+          const px = startX + r.progress * (finishX - startX);
+          const py = trackTop + (rIdx + 0.5) * laneH;
+          this.dustParticles.push({
+            x: px - 20,
+            y: py + 16 + (Math.random() - 0.5) * 8,
+            vx: -1.4 - Math.random() * 1.5,
+            vy: -0.4 - Math.random() * 0.6,
+            r: 4 + Math.random() * 5,
+            life: 1
+          });
+        }
+        for (let i = this.dustParticles.length - 1; i >= 0; i--) {
+          const d = this.dustParticles[i];
+          d.x += d.vx;
+          d.y += d.vy;
+          d.r += 0.16;
+          d.life -= 0.045;
+          if (d.life <= 0) {
+            this.dustParticles.splice(i, 1);
+          } else {
+            ctx.fillStyle = `rgba(255, 255, 255, ${d.life * 0.55})`;
+            ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        // 6. DRAW CHIBI PETS & CRISP NAME BADGES
+        const petScale = Math.min(1.22, Math.max(0.72, laneH / 52));
+        this.racers.forEach((r, idx) => {
+          const px = startX + r.progress * (finishX - startX);
+          const py = trackTop + (idx + 0.5) * laneH;
+          const isSprinting = isRacingPhase && ((r.isWinner && this.raceProgress > 0.72) || (r.isDecoy && this.raceProgress > 0.4 && this.raceProgress < 0.75));
+          const isLead = isRacingPhase && idx === leaderIdx && this.raceProgress > 0.05;
+          const runPhase = isRacingPhase ? timeSec * (isSprinting ? 20 : 14) + idx * 1.3 : timeSec * 2 + idx;
+
+          Graphics.drawChibiPet(ctx, r.petType, px, py, petScale, isRacingPhase ? runPhase : 0, isSprinting, isLead);
+
+          // Place name badge cleanly to the left of the pet (or above if near start)
+          const badgeX = Math.max(76, px - 68 * petScale);
+          Graphics.drawNameBadge(ctx, r.label, badgeX, py, 148, isLead, Math.max(13, Math.min(16, laneH * 0.30)));
+        });
+
+        // 7. BIG ANIMATED COUNTDOWN 3 - 2 - 1 - BẮT ĐẦU!
+        if (this.isRunning && elapsed < cdDur + 0.65) {
+          const label = elapsed < cdDur ? String(3 - Math.floor((elapsed / cdDur) * 3)) : 'BẮT ĐẦU!';
+          const subT = elapsed < cdDur ? ((elapsed / cdDur) * 3) % 1 : (elapsed - cdDur) / 0.65;
+          const popScale = 1.25 - subT * 0.25;
+          ctx.save();
+          ctx.translate(w / 2, h * 0.24);
+          ctx.scale(popScale, popScale);
+          ctx.font = `900 ${Math.min(110, w * 0.11)}px ${getComputedStyle(document.body).fontFamily}`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.lineWidth = 12;
+          ctx.strokeStyle = '#ffffff';
+          ctx.strokeText(label, 0, 0);
+          ctx.fillStyle = elapsed < cdDur ? '#ef4444' : '#16a34a';
+          ctx.fillText(label, 0, 0);
+          ctx.restore();
+        }
+
+        // Check race completion
+        if (this.isRunning && elapsed >= this.totalDuration) {
+          this.finishRace();
+        }
+      },
+
+      /* --- Winner Modal & 10-Second Answer Timer --- */
+      openWinnerModal() {
+        document.getElementById('winnerNameEl').textContent = Store.getDisplayName(this.winner).toUpperCase();
+        Graphics.drawWinnerPodium(this.winnerPetType);
+        this.resetAnswerTimer();
+        document.getElementById('winnerModal').classList.remove('hidden');
+        Confetti.start();
+        Sound.winFanfare();
+      },
+
+      closeWinnerModal() {
+        this.stopAnswerTimer();
+        Confetti.stop();
+        document.getElementById('winnerModal').classList.add('hidden');
+      },
+
+      resetAnswerTimer() {
+        this.stopAnswerTimer();
+        this.timerSeconds = 10;
+        const disp = document.getElementById('timerDisplay');
+        disp.textContent = '10';
+        disp.className = 'timer-number';
+        document.getElementById('timerFill').style.width = '100%';
+        document.getElementById('btnTimerStart').classList.remove('hidden');
+        document.getElementById('btnTimerStart').textContent = 'Bắt đầu đếm giờ';
+        document.getElementById('btnTimerPause').classList.add('hidden');
+      },
+
+      startAnswerTimer() {
+        if (this.timerRunning) return;
+        if (this.timerSeconds <= 0) this.timerSeconds = 10;
+        Sound.unlock();
+        this.timerRunning = true;
+        document.getElementById('btnTimerStart').classList.add('hidden');
+        document.getElementById('btnTimerPause').classList.remove('hidden');
+        this.updateTimerDisplay();
+
+        this.timerHandle = setInterval(() => {
+          this.timerSeconds -= 1;
+          if (this.timerSeconds <= 0) {
+            this.timerSeconds = 0;
+            this.stopAnswerTimer();
+            const disp = document.getElementById('timerDisplay');
+            disp.textContent = 'HẾT THỜI GIAN!';
+            disp.className = 'timer-number done';
+            document.getElementById('timerFill').style.width = '0%';
+            document.getElementById('btnTimerStart').classList.remove('hidden');
+            document.getElementById('btnTimerStart').textContent = 'Đếm lại 10s';
+            document.getElementById('btnTimerPause').classList.add('hidden');
+            Sound.timeUp();
+          } else {
+            this.updateTimerDisplay();
+            Sound.timerTick(this.timerSeconds <= 3);
+          }
+        }, 1000);
+      },
+
+      pauseAnswerTimer() {
+        this.stopAnswerTimer();
+        document.getElementById('btnTimerStart').classList.remove('hidden');
+        document.getElementById('btnTimerStart').textContent = 'Tiếp tục';
+        document.getElementById('btnTimerPause').classList.add('hidden');
+      },
+
+      stopAnswerTimer() {
+        this.timerRunning = false;
+        if (this.timerHandle) {
+          clearInterval(this.timerHandle);
+          this.timerHandle = null;
+        }
+      },
+
+      updateTimerDisplay() {
+        const disp = document.getElementById('timerDisplay');
+        disp.textContent = String(this.timerSeconds);
+        disp.className = 'timer-number' + (this.timerSeconds <= 3 ? ' warn' : '');
+        document.getElementById('timerFill').style.width = `${(this.timerSeconds / 10) * 100}%`;
+      },
+
+      /* --- List & History Modals --- */
+      openListModal() {
+        const ta = document.getElementById('studentListInput');
+        ta.value = Store.state.participants.map(p => p.name).join('\n');
+        document.getElementById('chkNoRepeat').checked = Store.state.noRepeat;
+        this.updateListCountHint();
+        document.getElementById('listModal').classList.remove('hidden');
+      },
+
+      updateListCountHint() {
+        const lines = document.getElementById('studentListInput').value
+          .split(/\r?\n/).map(s => s.trim().replace(/\s+/g, ' ')).filter(Boolean);
+        const hint = document.getElementById('listCountHint');
+        hint.textContent = `Hiện có: ${lines.length} người tham gia (hỗ trợ tối đa 60 người).`;
+        hint.style.color = lines.length > 60 ? '#dc2626' : '#2563eb';
+      },
+
+      saveListFromModal() {
+        const lines = document.getElementById('studentListInput').value
+          .split(/\r?\n/).map(s => s.trim().replace(/\s+/g, ' ')).filter(Boolean);
+        if (lines.length === 0) {
+          this.toast('Vui lòng nhập ít nhất 1 người tham gia!');
+          return;
+        }
+        const trimmed = lines.slice(0, 60);
+        // Giữ nguyên trạng thái đã gọi cho những người có tên cũ nếu muốn, hoặc tạo danh sách mới sạch sẽ
+        Store.state.participants = trimmed.map((name, i) => ({
+          id: 'p_' + (i + 1) + '_' + Date.now(),
+          name,
+          called: false
+        }));
+        Store.state.noRepeat = document.getElementById('chkNoRepeat').checked;
+        Store.state.history = [];
+        Store.save();
+        this.syncUI();
+        this.preparePreviewRoster();
+        document.getElementById('listModal').classList.add('hidden');
+        this.toast(`Đã lưu danh sách ${trimmed.length} người tham gia!`);
+      },
+
+      openHistoryModal() {
+        const total = Store.state.participants.length;
+        const called = Store.state.participants.filter(p => p.called).length;
+        document.getElementById('historySummary').textContent = `Đã gọi: ${called}/${total} người • Tổng số lượt: ${Store.state.history.length}`;
+        const listEl = document.getElementById('historyListEl');
+        listEl.innerHTML = '';
+        if (Store.state.history.length === 0) {
+          listEl.innerHTML = '<div style="text-align:center; padding:24px; color:#64748b; font-weight:800;">Chưa có lượt gọi tên nào trong vòng này.</div>';
+        } else {
+          Store.state.history.forEach((h, idx) => {
+            const row = document.createElement('div');
+            row.className = 'history-item';
+            row.innerHTML = `<span>#${Store.state.history.length - idx}. ${h.name}</span><span style="color:#64748b; font-size:13px;">${h.time}</span>`;
+            listEl.appendChild(row);
+          });
+        }
+        document.getElementById('historyModal').classList.remove('hidden');
+      },
+
+      /* --- Custom Modal Dialog & Toast --- */
+      showDialog({ title = 'Thông báo', message = '', showCancel = false, okText = 'Đồng ý', cancelText = 'Hủy' }) {
+        return new Promise(resolve => {
+          const modal = document.getElementById('dialogModal');
+          document.getElementById('dialogTitle').textContent = title;
+          document.getElementById('dialogMessage').textContent = message;
+          const okBtn = document.getElementById('dialogOkBtn');
+          const cancelBtn = document.getElementById('dialogCancelBtn');
+          okBtn.textContent = okText;
+          cancelBtn.textContent = cancelText;
+          cancelBtn.classList.toggle('hidden', !showCancel);
+          modal.classList.remove('hidden');
+
+          const done = (val) => {
+            modal.classList.add('hidden');
+            okBtn.onclick = null;
+            cancelBtn.onclick = null;
+            resolve(val);
+          };
+          okBtn.onclick = () => done(true);
+          cancelBtn.onclick = () => done(false);
+        });
+      },
+
+      toast(msg) {
+        const el = document.getElementById('toastEl');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+        clearTimeout(this._toastTimer);
+        this._toastTimer = setTimeout(() => el.classList.add('hidden'), 2600);
+      },
+
+      toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.().catch(() => {});
+        } else {
+          document.exitFullscreen?.().catch(() => {});
+        }
+      },
+
+      /* --- Bind All UI Events --- */
+      bindEvents() {
+        document.getElementById('btnStart').addEventListener('click', () => { Sound.click(); this.startRace(); });
+        document.getElementById('btnStartBig').addEventListener('click', () => { Sound.click(); this.startRace(); });
+        document.getElementById('btnNext').addEventListener('click', () => { Sound.click(); this.startRace(); });
+        document.getElementById('btnWinnerNext').addEventListener('click', () => { Sound.click(); this.startRace(); });
+        document.getElementById('btnWinnerClose').addEventListener('click', () => { Sound.click(); this.closeWinnerModal(); });
+
+        document.getElementById('btnList').addEventListener('click', () => { Sound.click(); this.openListModal(); });
+        document.getElementById('btnHistory').addEventListener('click', () => { Sound.click(); this.openHistoryModal(); });
+
+        document.getElementById('btnResetRound').addEventListener('click', async () => {
+          Sound.click();
+          const ok = await this.showDialog({
+            title: 'Đặt lại vòng chọn',
+            message: 'Thầy cô muốn đặt lại vòng chọn để tất cả mọi người cùng tham gia lại từ đầu?',
+            showCancel: true,
+            okText: 'Đặt lại ngay'
+          });
+          if (ok) {
+            Store.resetRound();
+            this.syncUI();
+            this.preparePreviewRoster();
+            this.toast('Đã đặt lại vòng chọn thành công!');
+          }
+        });
+
+        document.getElementById('btnClearHistory').addEventListener('click', async () => {
+          Sound.click();
+          const ok = await this.showDialog({
+            title: 'Đặt lại lịch sử & vòng chọn',
+            message: 'Xóa lịch sử gọi tên và cho phép tất cả mọi người tham gia lại?',
+            showCancel: true,
+            okText: 'Đồng ý'
+          });
+          if (ok) {
+            Store.resetRound();
+            this.syncUI();
+            this.preparePreviewRoster();
+            document.getElementById('historyModal').classList.add('hidden');
+            this.toast('Đã đặt lại lịch sử!');
+          }
+        });
+
+        document.getElementById('btnSound').addEventListener('click', () => {
+          Store.state.soundEnabled = !Store.state.soundEnabled;
+          Sound.enabled = Store.state.soundEnabled;
+          if (!Sound.enabled) Sound.stopRaceMusic();
+          else Sound.click();
+          Store.save();
+          this.syncUI();
+        });
+
+        document.getElementById('btnFullscreen').addEventListener('click', () => {
+          Sound.click();
+          this.toggleFullscreen();
+        });
+
+        // List modal controls
+        document.getElementById('studentListInput').addEventListener('input', () => this.updateListCountHint());
+        document.getElementById('btnLoadSample').addEventListener('click', () => {
+          Sound.click();
+          document.getElementById('studentListInput').value = SAMPLE_NAMES.join('\n');
+          this.updateListCountHint();
+        });
+        document.getElementById('btnSaveList').addEventListener('click', () => {
+          Sound.click();
+          this.saveListFromModal();
+        });
+
+        // Timer controls
+        document.getElementById('btnTimerStart').addEventListener('click', () => { Sound.click(); this.startAnswerTimer(); });
+        document.getElementById('btnTimerPause').addEventListener('click', () => { Sound.click(); this.pauseAnswerTimer(); });
+        document.getElementById('btnTimerReset').addEventListener('click', () => { Sound.click(); this.resetAnswerTimer(); });
+
+        // Close buttons
+        document.querySelectorAll('[data-close]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            Sound.click();
+            document.getElementById(btn.dataset.close).classList.add('hidden');
+          });
+        });
+
+        // Spacebar shortcut to start race when no modal/input is focused
+        window.addEventListener('keydown', (e) => {
+          if (e.code !== 'Space') return;
+          const tag = (document.activeElement?.tagName || '').toUpperCase();
+          if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+          const anyModalOpen = ['listModal', 'historyModal', 'dialogModal'].some(
+            id => !document.getElementById(id).classList.contains('hidden')
+          );
+          if (anyModalOpen) return;
+          e.preventDefault();
+          if (!this.isRunning) this.startRace();
+        });
+      }
+    };
+
+    window.addEventListener('load', () => App.init());
+  })();
+  </script>
+</body>
+</html>
